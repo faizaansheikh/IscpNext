@@ -29,7 +29,7 @@ const useStyles = makeStyles({
 function BasicTable() {
   const classes = useStyles();
   return (
-    <TableContainer component={Paper} sx={{ mt: "50px", width: "100%" }}>
+    <TableContainer component={Paper} sx={{ mt: "50px", width: "100%" }} >
       <Table
         className={classes.table}
         sx={{ width: "100%" }}
