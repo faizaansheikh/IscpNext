@@ -5,7 +5,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { makeStyles } from "@mui/styles";
+// import { makeStyles } from "@mui/styles";
 // import { Box } from "@mui/material";
 
 function createData(name, text) {
@@ -17,21 +17,21 @@ const rows = [
   createData("B", "b text"),
   createData("C", "c text"),
 ];
-const useStyles = makeStyles({
-  table: {
-    //   minWidth: 350,
-    "& .MuiTableCell-root": {
-      border: "1px solid black",
-    },
-  },
-});
+// const useStyles = makeStyles({
+//   table: {
+//     //   minWidth: 350,
+//     "& .MuiTableCell-root": {
+//       border: "1px solid black",
+//     },
+//   },
+// });
 
 function BasicTable() {
-  const classes = useStyles();
+  // const classes = useStyles();
   return (
     <TableContainer component={Paper} sx={{ mt: "50px", width: "100%" }} >
       <Table
-        className={classes.table}
+        // className={classes.table}
         sx={{ width: "100%" }}
         aria-label="simple table"
       >
@@ -46,15 +46,15 @@ function BasicTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {rows.map((row, index) => (
             <TableRow
-              key={row.name}
+              key={index}
             //   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
               <TableCell align="center" component="th" scope="row">
                 {row.name}
               </TableCell>
-              <TableCell align="center">{row.text}</TableCell>
+              <TableCell align="center" key={index}>{row.text}</TableCell>
             </TableRow>
           ))}
         </TableBody>

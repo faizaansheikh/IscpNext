@@ -16,41 +16,41 @@ import List from "@mui/material/List";
 // import SettingsIcon from "@mui/icons-material/Settings";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-// import Setup from "../Setups/Setup";
-// import Results from "../Results/Results";
+import Setup from "../../setup/page";
+import Results from "../../result/page";
 import { Button } from "@mui/material";
-// import { makeStyles } from "@mui/styles";
+import { makeStyles } from "@mui/styles";
 // import MenuIcon from "@mui/icons-material/Menu";
 const drawerWidth = 270;
 
-// const useStyles = makeStyles((theme) => ({
-//   container: {
-//     display: "flex",
-//     justifyContent: "flex-end",
-//     padding: "10px 20px 0px 0px",
-//     color: "white",
-//   },
-// }));
+const useStyles = makeStyles((theme) => ({
+  container: {
+    display: "flex",
+    justifyContent: "flex-end",
+    padding: "10px 20px 0px 0px",
+    color: "white",
+  },
+}));
 
 function ResponsiveDrawer(props) {
-  //   const classes = useStyles();
+  const classes = useStyles();
   const { window } = props;
-  const [mobileOpen, setMobileOpen] = React.useState(true);
-  //   const [menuData, setMenuData] = React.useState("result");
+  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [menuData, setMenuData] = React.useState("result");
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
   const drawer = (
     <div>
-      <div>
+      <div className={classes.container}>
         <IconButton
           color="inherit"
           aria-label="open drawer"
           edge="end"
           display='end'
           onClick={handleDrawerToggle}
-        // className={classes.container}
+          className={classes.container}
         // sx={{ display:'flex',justifyContent:'end',alignItems:'end' }}
         >
           {/* <CloseIcon onClick={() => setMobileOpen(false)} /> */}
@@ -161,7 +161,7 @@ function ResponsiveDrawer(props) {
         <Drawer
           container={container}
           variant="temporary"
-          open={true}
+          open={mobileOpen}
           onClose={handleDrawerToggle}
           ModalProps={{
             keepMounted: true, // Better open performance on mobile.
@@ -200,8 +200,8 @@ function ResponsiveDrawer(props) {
         }}
       >
         <Toolbar />
-        {/* {menuData == "setup" && <Setup />}
-        {menuData == "result" && <Results />} */}
+        {menuData == "setup" && <Setup />}
+        {menuData == "result" && <Results />}
       </Box>
     </Box>
   );

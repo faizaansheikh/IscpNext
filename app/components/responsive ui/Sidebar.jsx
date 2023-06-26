@@ -10,20 +10,14 @@ import List from "@mui/material/List";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 // import { SettingsIcon } from '@mui/icons-material';
-// import Setup from "../Setups/Setup";
 import { Button } from "@mui/material";
-// import Results from "../Results/Results";
-// import Graph from "../Graph/Graph";
 // import GridOnIcon from '@mui/icons-material/GridOn';
-import Link from "next/link";
 import Setup from "../../setup/page";
-// import BasicTable from "../setup/BasicTable";
 import Results from '../../result/page';
-// import logo from './components/logo'
 const drawerWidth = 255;
 
 export default function ClippedDrawer() {
-  const [menuData, setMenuData] = React.useState("result");
+  const [menuData, setMenuData] = React.useState("setup");
   return (
     <Box sx={{ display: "flex", bgcolor: "#398585 !imporant" }}>
       <CssBaseline />
@@ -79,14 +73,12 @@ export default function ClippedDrawer() {
               >
                 {/* <InboxIcon /> */}
                 {/* <SettingsIcon sx={{ fontSize: '20px' }} /> */}
-                <Link href='/setup'>
-                  <Button
-                    sx={{ color: "white" }}
-                    onClick={() => setMenuData("setup")}
-                  >
-                    Segmentation Setups
-                  </Button>
-                </Link>
+                <Button
+                  sx={{ color: "white" }}
+                  onClick={() => setMenuData("setup")}
+                >
+                  Segmentation Setups
+                </Button>
               </Box>
               <Box
                 sx={{
@@ -98,14 +90,12 @@ export default function ClippedDrawer() {
               >
                 {/* <InboxIcon /> */}
                 {/* <GridOnIcon sx={{ fontSize: '18px' }} /> */}
-                <Link href='/result'>
-                  <Button
-                    sx={{ color: "white" }}
-                    onClick={() => setMenuData("result")}
-                  >
-                    Segmentation Results
-                  </Button>
-                </Link>
+                <Button
+                  sx={{ color: "white" }}
+                  onClick={() => setMenuData("result")}
+                >
+                  Segmentation Results
+                </Button>
               </Box>
             </Box>
           </List>
@@ -116,10 +106,6 @@ export default function ClippedDrawer() {
         <Toolbar />
         {menuData === "setup" && <Setup />}
         {menuData === "result" && <Results />}
-        {/* {menuData === "graph" && <Graph />} */}
-        {/* <Setup/> */}
-        {/* <Results /> */}
-        {/* <BasicTable/> */}
       </Box>
     </Box>
   );
