@@ -1,4 +1,4 @@
-import MainFile from './components/responsive ui/MainFile'
+// import MainFile from './components/responsive ui/MainFile'
 import './globals.css'
 import { Inter } from 'next/font/google'
 
@@ -15,11 +15,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <MainFile />
-        {/* <main className='container'> */}
-          {children}
-        {/* </main> */}
+      <body className='container'>
+        {children}
       </body>
     </html>
   )

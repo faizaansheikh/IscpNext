@@ -87,8 +87,9 @@ export default function BasicTable() {
                 }}
               >
                 <TableRow sx={{ border: "1px solid white", color: "white" }}>
-                  {headerData.map((elem) => (
+                  {headerData.map((elem, index) => (
                     <TableCell
+                      key={index}
                       align="center"
                       style={{
                         backgroundColor: "#398585",
@@ -112,8 +113,8 @@ export default function BasicTable() {
                   // key={row.name}
                   sx={{ "&:last-child td, &:last-child th": { border: '1px solid' } }}
                 >
-                  {rows.map((elem) => (
-                    <TableCell sx={{ border: '1px solid grey', textAlign: 'center', whiteSpace: 'nowrap', p: '10px' }} >
+                  {rows.map((elem, index) => (
+                    <TableCell key={index} sx={{ border: '1px solid grey', textAlign: 'center', whiteSpace: 'nowrap', p: '10px' }} >
                       {elem}
                     </TableCell>
                   ))}
@@ -122,19 +123,8 @@ export default function BasicTable() {
                   // key={row.name}
                   sx={{ "&:last-child td, &:last-child th": { border: '1px solid' } }}
                 >
-                  {rows.map((elem) => (
-                    <TableCell sx={{ border: '1px solid grey', textAlign: 'center', whiteSpace: 'nowrap', p: '10px' }} >
-                      {elem}
-                    </TableCell>
-                  ))}
-                </TableRow>
-
-                <TableRow
-                  // key={row.name}
-                  sx={{ "&:last-child td, &:last-child th": { border: '1px solid' } }}
-                >
-                  {rows.map((elem) => (
-                    <TableCell sx={{ border: '1px solid grey', textAlign: 'center', whiteSpace: 'nowrap', p: '10px' }} >
+                  {rows.map((elem, index) => (
+                    <TableCell key={index} sx={{ border: '1px solid grey', textAlign: 'center', whiteSpace: 'nowrap', p: '10px' }} >
                       {elem}
                     </TableCell>
                   ))}
@@ -144,8 +134,8 @@ export default function BasicTable() {
                   // key={row.name}
                   sx={{ "&:last-child td, &:last-child th": { border: '1px solid' } }}
                 >
-                  {rows.map((elem) => (
-                    <TableCell sx={{ border: '1px solid grey', textAlign: 'center', whiteSpace: 'nowrap', p: '10px' }} >
+                  {rows.map((elem, index) => (
+                    <TableCell key={index} sx={{ border: '1px solid grey', textAlign: 'center', whiteSpace: 'nowrap', p: '10px' }} >
                       {elem}
                     </TableCell>
                   ))}
@@ -155,8 +145,8 @@ export default function BasicTable() {
                   // key={row.name}
                   sx={{ "&:last-child td, &:last-child th": { border: '1px solid' } }}
                 >
-                  {rows.map((elem) => (
-                    <TableCell sx={{ border: '1px solid grey', textAlign: 'center', whiteSpace: 'nowrap', p: '10px' }} >
+                  {rows.map((elem, index) => (
+                    <TableCell key={index} sx={{ border: '1px solid grey', textAlign: 'center', whiteSpace: 'nowrap', p: '10px' }} >
                       {elem}
                     </TableCell>
                   ))}
@@ -166,8 +156,8 @@ export default function BasicTable() {
                   // key={row.name}
                   sx={{ "&:last-child td, &:last-child th": { border: '1px solid' } }}
                 >
-                  {rows.map((elem) => (
-                    <TableCell sx={{ border: '1px solid grey', textAlign: 'center', whiteSpace: 'nowrap', p: '10px' }} >
+                  {rows.map((elem, index) => (
+                    <TableCell key={index} sx={{ border: '1px solid grey', textAlign: 'center', whiteSpace: 'nowrap', p: '10px' }} >
                       {elem}
                     </TableCell>
                   ))}
@@ -177,28 +167,8 @@ export default function BasicTable() {
                   // key={row.name}
                   sx={{ "&:last-child td, &:last-child th": { border: '1px solid' } }}
                 >
-                  {rows.map((elem) => (
-                    <TableCell sx={{ border: '1px solid grey', textAlign: 'center', whiteSpace: 'nowrap', p: '10px' }} >
-                      {elem}
-                    </TableCell>
-                  ))}
-                </TableRow>
-                <TableRow
-                  // key={row.name}
-                  sx={{ "&:last-child td, &:last-child th": { border: '1px solid' } }}
-                >
-                  {rows.map((elem) => (
-                    <TableCell sx={{ border: '1px solid grey', textAlign: 'center', whiteSpace: 'nowrap', p: '10px' }} >
-                      {elem}
-                    </TableCell>
-                  ))}
-                </TableRow>
-                <TableRow
-                  // key={row.name}
-                  sx={{ "&:last-child td, &:last-child th": { border: '1px solid' } }}
-                >
-                  {rows.map((elem) => (
-                    <TableCell sx={{ border: '1px solid grey', textAlign: 'center', whiteSpace: 'nowrap', p: '10px' }} >
+                  {rows.map((elem, index) => (
+                    <TableCell key={index} sx={{ border: '1px solid grey', textAlign: 'center', whiteSpace: 'nowrap', p: '10px' }} >
                       {elem}
                     </TableCell>
                   ))}
@@ -208,8 +178,39 @@ export default function BasicTable() {
                   // key={row.name}
                   sx={{ "&:last-child td, &:last-child th": { border: '1px solid' } }}
                 >
-                  {rows.map((elem) => (
-                    <TableCell sx={{ border: '1px solid grey', textAlign: 'center', whiteSpace: 'nowrap', p: '10px' }} >
+                  {rows.map((elem, index) => (
+                    <TableCell key={index} sx={{ border: '1px solid grey', textAlign: 'center', whiteSpace: 'nowrap', p: '10px' }} >
+                      {elem}
+                    </TableCell>
+                  ))}
+                </TableRow>
+                <TableRow
+                  // key={row.name}
+                  sx={{ "&:last-child td, &:last-child th": { border: '1px solid' } }}
+                >
+                  {rows.map((elem, index) => (
+                    <TableCell key={index} sx={{ border: '1px solid grey', textAlign: 'center', whiteSpace: 'nowrap', p: '10px' }} >
+                      {elem}
+                    </TableCell>
+                  ))}
+                </TableRow>
+                <TableRow
+                  // key={row.name}
+                  sx={{ "&:last-child td, &:last-child th": { border: '1px solid' } }}
+                >
+                  {rows.map((elem, index) => (
+                    <TableCell key={index} sx={{ border: '1px solid grey', textAlign: 'center', whiteSpace: 'nowrap', p: '10px' }} >
+                      {elem}
+                    </TableCell>
+                  ))}
+                </TableRow>
+
+                <TableRow
+                  // key={row.name}
+                  sx={{ "&:last-child td, &:last-child th": { border: '1px solid' } }}
+                >
+                  {rows.map((elem, index) => (
+                    <TableCell key={index} sx={{ border: '1px solid grey', textAlign: 'center', whiteSpace: 'nowrap', p: '10px' }} >
                       {elem}
                     </TableCell>
                   ))}
@@ -219,8 +220,8 @@ export default function BasicTable() {
                   // key={row.name}
                   sx={{ "&:last-child td, &:last-child th": { border: '1px solid gray' } }}
                 >
-                  {rows.map((elem) => (
-                    <TableCell sx={{ border: '1px solid grey', textAlign: 'center', whiteSpace: 'nowrap', p: '10px' }} >
+                  {rows.map((elem, index) => (
+                    <TableCell key={index} sx={{ border: '1px solid grey', textAlign: 'center', whiteSpace: 'nowrap', p: '10px' }} >
                       {elem}
                     </TableCell>
                   ))}

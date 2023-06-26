@@ -1,7 +1,10 @@
+import MainFile from "./components/responsive ui/MainFile";
 
 const page = () => {
   return (
-    <div>pages</div>
+    <div>
+      <MainFile />
+    </div>
   )
 }
 

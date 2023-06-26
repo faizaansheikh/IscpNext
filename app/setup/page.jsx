@@ -5,7 +5,6 @@ import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import BasicTable from '../components/BasicTable';
-// import dynamic from "next/dynamic";
 import {
   Autocomplete,
   Button,
@@ -20,7 +19,6 @@ import {
   Typography,
 } from "@mui/material";
 
-// import Main from '../Dashboard/Main'
 const ColorButton = styled(Button)(() => ({
   color: "white",
   backgroundColor: "#398585",
@@ -47,13 +45,13 @@ const CssTextField = styled(TextField)({
     },
   },
 });
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === "none",
-  // ...theme.typography.body2,
-  // padding: theme.spacing(1),
-  // textAlign: 'center',
-  // color: theme.palette.text.secondary,
-}));
+// const Item = styled(Paper)(({ theme }) => ({
+//   backgroundColor: theme.palette.mode === "none",
+//   // ...theme.typography.body2,
+//   // padding: theme.spacing(1),
+//   // textAlign: 'center',
+//   // color: theme.palette.text.secondary,
+// }));
 
 function Setup() {
   const top100Films = [
@@ -268,7 +266,7 @@ function Setup() {
           columnSpacing={{ xs: 1, sm: 1, md: 3 }}
           justify='center'
           width='auto'
-          sx={{ mt:'33px' }}
+          sx={{ mt: '33px' }}
         >
           <Grid item xs={12} md={4}>
             <Box
