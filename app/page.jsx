@@ -1,9 +1,10 @@
-import MainFile from "./components/responsive ui/MainFile";
+import Appbar from "./components/Appbar";
+
 
 const page = () => {
   return (
     <div>
-      <MainFile />
+      <Appbar />
     </div>
   )
 }
