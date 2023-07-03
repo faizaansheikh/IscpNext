@@ -1,57 +1,26 @@
 'use client'
 
-import React, { useState } from "react";
+import React from "react";
 import dynamic from 'next/dynamic';
 const Plot = dynamic(() => import('react-plotly.js'));
 
 import {
     Typography,
-    FormControl,
-    Card,
     Divider,
-    Autocomplete,
-    TextField,
-    Select,
-    MenuItem,
-    Box,
+    Card,
 } from "@mui/material";
-const AttributeGraph = () => {
-    const [drop, setDrop] = useState('')
+
+const Graph = () => {
     return (
         <Card
             sx={{
                 boxShadow: "1px 1px 8px #80808085",
-                marginTop: "30px",
+                // marginTop: "30px",
                 height: "495px",
             }}
         >
-            <Typography sx={{ padding: 2 }}>Attribute Graphs</Typography>
+            <Typography sx={{ padding: 2 }}>Graph</Typography>
             <Divider />
-            <Box sx={{ minWidth: 120, pl: '20px', pr: '20px' }}>
-                <FormControl sx={{ pb: '15px', pt: '15px' }} fullWidth>
-                    <Select
-                        size="small"
-                        id="demo-simple-select"
-                        value={drop}
-                        onChange={(e) => setDrop(e.target.value)}
-                    >
-                        <MenuItem value='Bonus Regular'> Bonus Regular</MenuItem>
-                        <MenuItem value='Bonus Trister'> Bonus Trister</MenuItem>
-                        <MenuItem value='Brite Maximum Power'> Brite Maximum Power</MenuItem>
-                        <MenuItem value='Great Regular Flavour'>Great Regular Flavour</MenuItem>
-                        <MenuItem value='Max Bar Regular'> Max Bar Regular</MenuItem>
-                        <MenuItem value='0'> 0</MenuItem>
-                    </Select>
-                </FormControl>
-            </Box>
-            <Autocomplete
-                size="small"
-                disablePortal
-                id="combo-box-demo"
-                options={[1, 2, 3, 4, 5, 6]}
-                sx={{ width: "100%", pl: "20px", pr: "20px" }}
-                renderInput={(params) => <TextField {...params} label="110-70 GM" />}
-            />
             <Plot
                 style={{ Width: "100%" }}
                 data={[
@@ -97,4 +66,4 @@ const AttributeGraph = () => {
     );
 };
 
-export default AttributeGraph;
+export default Graph;
