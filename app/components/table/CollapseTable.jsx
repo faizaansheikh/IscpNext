@@ -13,7 +13,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-const data = [
+const data1 = [
   "ABCXYZ",
   "Cat Desc",
   "Brand",
@@ -21,6 +21,8 @@ const data = [
   "Matrial Grammage Description",
   "Plant",
   "Plant Description",
+];
+const data2 = [
   "Measure",
   "Week 1",
   "Week 2",
@@ -42,19 +44,7 @@ function createData(
   Mgc,
   Mgd,
   Plant,
-  PlantDesc,
-  Measure,
-  Week1,
-  Week2,
-  Week3,
-  Week4,
-  Week5,
-  Week6,
-  Week7,
-  Week8,
-  Week9,
-  Week10,
-  Week11
+  PlantDesc
 ) {
   return {
     AY,
@@ -64,27 +54,22 @@ function createData(
     Mgd,
     Plant,
     PlantDesc,
-    Measure,
-    Week1,
-    Week2,
-    Week3,
-    Week4,
-    Week5,
-    Week6,
-    Week7,
-    Week8,
-    Week9,
-    Week10,
-    Week11,
     history: [
       {
-        abcxyz: "fewf",
-        catDesc: "ewfew",
-        brand: "ewfwe",
-        mgc: "fewew",
-        mgd: "wfefew",
-        plant: "tger",
-        plantDesc: "wfefwe",
+        measure: "AI forecast",
+        week1: 1,
+        week2: 1,
+        week3: 2,
+        week4: 2,
+        week5: 0,
+        week6: 0,
+        week7: 1,
+        week8: 1,
+        week9: 2,
+        week10: 1,
+        week11: 2,
+      },
+      {
         measure: "Compnay forecast",
         week1: 1,
         week2: 1,
@@ -99,13 +84,6 @@ function createData(
         week11: 2,
       },
       {
-        abcxyz: "",
-        catDesc: "",
-        brand: "",
-        mgc: "",
-        mgd: "",
-        plant: "",
-        plantDesc: "",
         measure: "Manual Adj",
         week1: 1,
         week2: 1,
@@ -120,13 +98,13 @@ function createData(
         week11: 2,
       },
       {
-        abcxyz: "",
-        catDesc: "",
-        brand: "",
-        mgc: "",
-        mgd: "",
-        plant: "",
-        plantDesc: "",
+        // abcxyz: "",
+        // catDesc: "",
+        // brand: "",
+        // mgc: "",
+        // mgd: "",
+        // plant: "",
+        // plantDesc: "",
         measure: "Rsf",
         week1: 1,
         week2: 1,
@@ -151,6 +129,7 @@ function Row(props) {
   return (
     <React.Fragment>
       <TableRow
+        sx={{ backgroundColor: open ? "#d7eaea" : 'white' }}
         align="center"
         style={{
           border: "1px solid white",
@@ -161,7 +140,7 @@ function Row(props) {
           textAlign: "center",
         }}
       >
-        <TableCell>
+        <TableCell align="center">
           <IconButton
             aria-label="expand row"
             size="small"
@@ -170,74 +149,194 @@ function Row(props) {
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
         </TableCell>
-        <TableCell align="center" component="th" scope="row">
+        <TableCell
+          sx={{ border: "1px solid white" }}
+          align="center"
+          component="th"
+          scope="row"
+        >
           {row.AY}
         </TableCell>
-        <TableCell align="center">{row.FabricCare}</TableCell>
-        <TableCell align="center">{row.BriteMaximumPower}</TableCell>
-        <TableCell align="center">{row.Mgc}</TableCell>
-        <TableCell align="center">{row.Mgd}</TableCell>
-        <TableCell align="center">{row.Plant}</TableCell>
-        <TableCell align="center">{row.PlantDesc}</TableCell>
-        <TableCell align="center">{row.Measure}</TableCell>
-        <TableCell align="center">{row.Week1}</TableCell>
-        <TableCell align="center">{row.Week2}</TableCell>
-        <TableCell align="center">{row.Week3}</TableCell>
-        <TableCell align="center">{row.Week4}</TableCell>
-        <TableCell align="center">{row.Week5}</TableCell>
-        <TableCell align="center">{row.Week6}</TableCell>
-        <TableCell align="center">{row.Week7}</TableCell>
-        <TableCell align="center">{row.Week8}</TableCell>
-        <TableCell align="center">{row.Week9}</TableCell>
-        <TableCell align="center">{row.Week10}</TableCell>
-        <TableCell align="center">{row.Week11}</TableCell>
+        <TableCell sx={{ border: "1px solid white" }} align="center">
+          {row.FabricCare}
+        </TableCell>
+        <TableCell sx={{ border: "1px solid white" }} align="center">
+          {row.BriteMaximumPower}
+        </TableCell>
+        <TableCell sx={{ border: "1px solid white" }} align="center">
+          {row.Mgc}
+        </TableCell>
+        <TableCell sx={{ border: "1px solid white" }} align="center">
+          {row.Mgd}
+        </TableCell>
+        <TableCell sx={{ border: "1px solid white" }} align="center">
+          {row.Plant}
+        </TableCell>
+        <TableCell sx={{ border: "1px solid white" }} align="center">
+          {row.PlantDesc}
+        </TableCell>
       </TableRow>
       <TableRow>
-        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
+        <TableCell
+          style={{
+            paddingRight: 0,
+            paddingLeft: 0,
+            paddingBottom: 0,
+            paddingTop: 0,
+            width: "100%",
+          }}
+          colSpan="100%"
+        >
           <Collapse in={open} timeout="auto" unmountOnExit>
-            
+            <Box sx={{ overflow: "auto" }}>
+              <Box sx={{ width: "100%", display: "table" }}>
+                <TableContainer
+                  sx={{
+                    maxHeight: 740,
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                  component={Paper}
+                >
+                  <Table aria-label="purchases">
+                    <TableHead>
+                      <TableRow>
+                        {/* <TableCell /> */}
 
-            
-              <Table aria-label="purchases">
-                <TableHead></TableHead>
-                <TableBody>
-                  {/* <TableCell /> */}
-                  {row.history.map((elem) => (
-                    <TableRow
-                      align="center"
-                      style={{
-                        whiteSpace: "nowrap",
-                        padding: "8px 18px 8px 18px",
+                        {data2.map((elem) => {
+                          return (
+                            <TableCell
+                              align="center"
+                              style={{
+                                backgroundColor: "#398585",
+                                color: "white",
+                                border: "1px solid white",
+                                whiteSpace: "nowrap",
+                                padding: "8px 18px 8px 18px",
+                                position: "sticky",
+                                fontSize: "15px",
+                                textAlign: "center",
+                              }}
+                            >
+                              {elem}
+                            </TableCell>
+                          );
+                        })}
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {/* <TableCell /> */}
+                      {row.history.map((elem) => (
+                        <TableRow
+                          align="center"
+                          style={{
+                            whiteSpace: "nowrap",
+                            // padding: "8px 18px 8px 18px",
 
-                        fontSize: "15px",
-                        textAlign: "center",
-                      }}
-                      key={elem.measure}
-                    >
-                      <TableCell>{elem.abcxyz}</TableCell>
-                      <TableCell>{elem.catDesc}</TableCell>
-                      <TableCell>{elem.brand}</TableCell>
-                      <TableCell>{elem.mgc}</TableCell>
-                      <TableCell>{elem.mgd}</TableCell>
-                      <TableCell>{elem.plant}</TableCell>
-                      <TableCell>{elem.plantDesc}</TableCell>
-                      <TableCell>{elem.measure}</TableCell>
-                      <TableCell>{elem.week1}</TableCell>
-                      <TableCell>{elem.week2}</TableCell>
-                      <TableCell>{elem.week3}</TableCell>
-                      <TableCell>{elem.week4}</TableCell>
-                      <TableCell>{elem.week5}</TableCell>
-                      <TableCell>{elem.week6}</TableCell>
-                      <TableCell>{elem.week7}</TableCell>
-                      <TableCell>{elem.week8}</TableCell>
-                      <TableCell>{elem.week9}</TableCell>
-                      <TableCell>{elem.week10}</TableCell>
-                      <TableCell>{elem.week11}</TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-         
+                            fontSize: "15px",
+                            textAlign: "center",
+                          }}
+                          key={elem.measure}
+                        >
+                          <TableCell sx={{ border: "1px solid lightGrey" }}>
+                            {elem.measure}
+                          </TableCell>
+                          <TableCell
+                            sx={{
+                            p: "5px 15px 5px 15px",
+                              textAlign: "center",
+                              border: "1px solid lightGrey",
+                            }}
+                          >
+                            {elem.week1}
+                          </TableCell>
+                          <TableCell
+                            sx={{
+                              textAlign: "center",
+                              border: "1px solid lightGrey",
+                            }}
+                          >
+                            {elem.week2}
+                          </TableCell>
+                          <TableCell
+                            sx={{
+                              textAlign: "center",
+                              border: "1px solid lightGrey",
+                            }}
+                          >
+                            {elem.week3}
+                          </TableCell>
+                          <TableCell
+                            sx={{
+                              textAlign: "center",
+                              border: "1px solid lightGrey",
+                            }}
+                          >
+                            {elem.week4}
+                          </TableCell>
+                          <TableCell
+                            sx={{
+                              textAlign: "center",
+                              border: "1px solid lightGrey",
+                            }}
+                          >
+                            {elem.week5}
+                          </TableCell>
+                          <TableCell
+                            sx={{
+                              textAlign: "center",
+                              border: "1px solid lightGrey",
+                            }}
+                          >
+                            {elem.week6}
+                          </TableCell>
+                          <TableCell
+                            sx={{
+                              textAlign: "center",
+                              border: "1px solid lightGrey",
+                            }}
+                          >
+                            {elem.week7}
+                          </TableCell>
+                          <TableCell
+                            sx={{
+                              textAlign: "center",
+                              border: "1px solid lightGrey",
+                            }}
+                          >
+                            {elem.week8}
+                          </TableCell>
+                          <TableCell
+                            sx={{
+                              textAlign: "center",
+                              border: "1px solid lightGrey",
+                            }}
+                          >
+                            {elem.week9}
+                          </TableCell>
+                          <TableCell
+                            sx={{
+                              textAlign: "center",
+                              border: "1px solid lightGrey",
+                            }}
+                          >
+                            {elem.week10}
+                          </TableCell>
+                          <TableCell
+                            sx={{
+                              textAlign: "center",
+                              border: "1px solid lightGrey",
+                            }}
+                          >
+                            {elem.week11}
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </TableContainer>
+              </Box>
+            </Box>
           </Collapse>
         </TableCell>
       </TableRow>
@@ -252,19 +351,7 @@ const rows = [
     "103",
     "20 GM",
     "PK 50",
-    "DC-Karachi",
-    "AI forecast",
-    "1",
-    "1",
-    "0",
-    "0",
-    "2",
-    "2",
-    "1",
-    "1",
-    "0",
-    "1",
-    "1"
+    "DC-Karachi"
   ),
   createData(
     "AY",
@@ -273,19 +360,7 @@ const rows = [
     "103",
     "20 GM",
     "PK 50",
-    "DC-Karachi",
-    "AI forecast",
-    "1",
-    "1",
-    "0",
-    "0",
-    "2",
-    "2",
-    "1",
-    "1",
-    "0",
-    "1",
-    "1"
+    "DC-Karachi"
   ),
 ];
 
@@ -294,13 +369,13 @@ export default function CollapsibleTable() {
     <Box sx={{ overflow: "auto", p: "20px" }}>
       <Box sx={{ width: "100%", display: "table", tableLayout: "fixed" }}>
         {/* <Paper sx={{ width: '100%', overflow: 'hidden',display:'flex',justifyContent:'center' }}> */}
-        <TableContainer sx={{ maxHeight: 740 }} component={Paper}>
+        <TableContainer sx={{ maxHeight: 540 }} component={Paper}>
           <Table aria-label="collapsible table">
-            <TableHead>
+            <TableHead sx={{ backgroundColor: "#398585" }}>
               <TableRow>
                 <TableCell />
 
-                {data.map((elem) => {
+                {data1.map((elem) => {
                   return (
                     <TableCell
                       align="center"
