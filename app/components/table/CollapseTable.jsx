@@ -14,8 +14,12 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import { Card, Divider, Typography } from "@mui/material";
-
+import { Button, TextField } from "@mui/material";
+import { makeStyles } from "@mui/styles";
+import CloseIcon from '@mui/icons-material/Close';
+import DoneIcon from "@mui/icons-material/Done";
+import Confirmation from "./Confirmation";
+const noPointer = { cursor: 'pointer' };
 const data1 = [
   "ABCXYZ",
   "Cat Desc",
@@ -59,6 +63,7 @@ function createData(
     PlantDesc,
     history: [
       {
+        id: "0",
         measure: "AI forecast",
         week1: 1,
         week2: 1,
@@ -73,6 +78,7 @@ function createData(
         week11: 2,
       },
       {
+        id: "1",
         measure: "Compnay forecast",
         week1: 1,
         week2: 1,
@@ -87,6 +93,7 @@ function createData(
         week11: 2,
       },
       {
+        id: "2",
         measure: "Manual Adj",
         week1: 1,
         week2: 1,
@@ -101,13 +108,7 @@ function createData(
         week11: 2,
       },
       {
-        // abcxyz: "",
-        // catDesc: "",
-        // brand: "",
-        // mgc: "",
-        // mgd: "",
-        // plant: "",
-        // plantDesc: "",
+        id: "3",
         measure: "Rsf",
         week1: 1,
         week2: 1,
@@ -128,11 +129,29 @@ function createData(
 function Row(props) {
   const { row } = props;
   const [open, setOpen] = React.useState(false);
-
+  const [openModal, setOpenModal] = React.useState(false);
+  const [indexVal, setIndexVal] = React.useState(0);
+  const [inputVal, setInputVal] = React.useState("");
+  const useStyles = makeStyles({
+    input: {
+      '& input[type=number]': {
+        '-moz-appearance': 'textfield'
+      },
+      '& input[type=number]::-webkit-outer-spin-button': {
+        '-webkit-appearance': 'none',
+        margin: 0
+      },
+      '& input[type=number]::-webkit-inner-spin-button': {
+        '-webkit-appearance': 'none',
+        margin: 0
+      }
+    },
+  });
+  const classes = useStyles();
   return (
     <React.Fragment>
       <TableRow
-        sx={{ backgroundColor: open ? "#d7eaea" : 'white' }}
+        sx={{ backgroundColor: open ? "#d7eaea" : "white" }}
         align="center"
         style={{
           border: "1px solid white",
@@ -229,118 +248,373 @@ function Row(props) {
                     </TableHead>
                     <TableBody>
                       {/* <TableCell /> */}
-                      {row.history.map((elem) => (
-                        <TableRow
-                          align="center"
-                          style={{
-                            whiteSpace: "nowrap",
-                            // padding: "8px 18px 8px 18px",
+                      {row.history.map((elem) =>
+                        indexVal === elem.id ? (
+                          <TableRow
+                            onClick={() => setIndexVal(elem.id)}
+                            align="center"
+                            style={{
+                              whiteSpace: "nowrap",
+                              // padding: "8px 18px 8px 18px",
 
-                            fontSize: "15px",
-                            textAlign: "center",
-                          }}
-                          key={elem.measure}
-                        >
-                          <TableCell sx={{ border: "1px solid lightGrey" }}>
-                            {elem.measure}
-                          </TableCell>
-                          <TableCell
-                            sx={{
-                              p: "5px 15px 5px 15px",
+                              fontSize: "15px",
                               textAlign: "center",
-                              border: "1px solid lightGrey",
                             }}
+                            key={elem.id}
                           >
-                            {elem.week1}
-                          </TableCell>
-                          <TableCell
-                            sx={{
+                            <TableCell sx={{ border: "1px solid lightGrey" }}>
+                              {elem.measure}
+                            </TableCell>
+                            <TableCell
+                              sx={{
+                                p: "5px 15px 5px 15px",
+                                textAlign: "center",
+                                border: "1px solid lightGrey",
+                              }}
+                            >
+                              <TextField
+                                type="number"
+                                className={classes.input}
+                                variant="standard"
+                                inputProps={{
+                                  min: 0,
+                                  style: { textAlign: "center" },
+                                }}
+                                defaultValue={elem.week1}
+                                onChange={(e) => setInputVal(e.target.value)}
+                              />
+                            </TableCell>
+                            <TableCell
+                              sx={{
+                                textAlign: "center",
+                                border: "1px solid lightGrey",
+                              }}
+                            >
+                              <TextField
+                                type="number"
+                                className={classes.input}
+                                variant="standard"
+                                inputProps={{
+                                  min: 0,
+                                  style: { textAlign: "center" },
+                                }}
+                                defaultValue={elem.week2}
+                                onChange={(e) => setInputVal(e.target.value)}
+                              />
+                            </TableCell>
+                            <TableCell
+                              sx={{
+                                textAlign: "center",
+                                border: "1px solid lightGrey",
+                              }}
+                            >
+                              <TextField
+                                type="number"
+                                className={classes.input}
+                                variant="standard"
+                                inputProps={{
+                                  min: 0,
+                                  style: { textAlign: "center" },
+                                }}
+                                defaultValue={elem.week3}
+                                onChange={(e) => setInputVal(e.target.value)}
+                              />
+                            </TableCell>
+                            <TableCell
+                              sx={{
+                                textAlign: "center",
+                                border: "1px solid lightGrey",
+                              }}
+                            >
+                              <TextField
+                                type="number"
+                                className={classes.input}
+                                variant="standard"
+                                inputProps={{
+                                  min: 0,
+                                  style: { textAlign: "center" },
+                                }}
+                                defaultValue={elem.week4}
+                                onChange={(e) => setInputVal(e.target.value)}
+                              />
+                            </TableCell>
+                            <TableCell
+                              sx={{
+                                textAlign: "center",
+                                border: "1px solid lightGrey",
+                              }}
+                            >
+                              <TextField
+                                type="number"
+                                className={classes.input}
+                                variant="standard"
+                                inputProps={{
+                                  min: 0,
+                                  style: { textAlign: "center" },
+                                }}
+                                defaultValue={elem.week5}
+                                onChange={(e) => setInputVal(e.target.value)}
+                              />
+                            </TableCell>
+                            <TableCell
+                              sx={{
+                                textAlign: "center",
+                                border: "1px solid lightGrey",
+                              }}
+                            >
+                              <TextField
+                                type="number"
+                                className={classes.input}
+                                variant="standard"
+                                inputProps={{
+                                  min: 0,
+                                  style: { textAlign: "center" },
+                                }}
+                                defaultValue={elem.week6}
+                                onChange={(e) => setInputVal(e.target.value)}
+                              />
+                            </TableCell>
+                            <TableCell
+                              sx={{
+                                textAlign: "center",
+                                border: "1px solid lightGrey",
+                              }}
+                            >
+                              <TextField
+                                type="number"
+                                className={classes.input}
+                                variant="standard"
+                                inputProps={{
+                                  min: 0,
+                                  style: { textAlign: "center" },
+                                }}
+                                defaultValue={elem.week7}
+                                onChange={(e) => setInputVal(e.target.value)}
+                              />
+                            </TableCell>
+                            <TableCell
+                              sx={{
+                                textAlign: "center",
+                                border: "1px solid lightGrey",
+                              }}
+                            >
+                              <TextField
+                                type="number"
+                                className={classes.input}
+                                variant="standard"
+                                inputProps={{
+                                  min: 0,
+                                  style: { textAlign: "center" },
+                                }}
+                                defaultValue={elem.week8}
+                                onChange={(e) => setInputVal(e.target.value)}
+                              />
+                            </TableCell>
+                            <TableCell
+                              sx={{
+                                textAlign: "center",
+                                border: "1px solid lightGrey",
+                              }}
+                            >
+                              <TextField
+                                type="number"
+                                className={classes.input}
+                                variant="standard"
+                                inputProps={{
+                                  min: 0,
+                                  style: { textAlign: "center" },
+                                }}
+                                defaultValue={elem.week9}
+                                onChange={(e) => setInputVal(e.target.value)}
+                              />
+                            </TableCell>
+                            <TableCell
+                              sx={{
+                                textAlign: "center",
+                                border: "1px solid lightGrey",
+                              }}
+                            >
+                              <TextField
+                                type="number"
+                                className={classes.input}
+                                variant="standard"
+                                inputProps={{
+                                  min: 0,
+                                  style: { textAlign: "center" },
+                                }}
+                                defaultValue={elem.week10}
+                                onChange={(e) => setInputVal(e.target.value)}
+                              />
+                            </TableCell>
+                            <TableCell
+                              sx={{
+                                textAlign: "center",
+                                border: "1px solid lightGrey",
+                              }}
+                            >
+                              <TextField
+                                type="number"
+                                className={classes.input}
+                                variant="standard"
+                                inputProps={{
+                                  min: 0,
+                                  style: { textAlign: "center" },
+                                }}
+                                defaultValue={elem.week11}
+                                onChange={(e) => setInputVal(e.target.value)}
+                              />
+                            </TableCell>
+
+                            <TableCell
+                              sx={{
+                                bgcolor: '#398585',
+                                p: '0px',
+                                textAlign: "center",
+                                // border: "1px solid lightGrey",
+                              }}
+                            >
+                              <IconButton
+                                style={noPointer}
+                              >
+                                <DoneIcon onClick={() => setOpenModal(true)} sx={{ color: 'whitesmoke' }} style={noPointer} />
+
+                              </IconButton>
+
+                            </TableCell>
+                            <TableCell
+                              sx={{
+                                bgcolor: '#398585',
+                                p: '0px',
+                                textAlign: "center",
+                                // border: "1px solid lightGrey",
+                              }}
+                            >
+                              <IconButton
+                                style={noPointer}
+                              >
+
+                                <CloseIcon onClick={() => setIndexVal(9)} sx={{ color: 'whitesmoke' }} style={noPointer} />
+                              </IconButton>
+
+                            </TableCell>
+                          </TableRow>
+                        ) : (
+                          <TableRow
+                            onClick={() => setIndexVal(elem.id)}
+                            align="center"
+                            style={{
+                              whiteSpace: "nowrap",
+                              // padding: "8px 18px 8px 18px",
+
+                              fontSize: "15px",
                               textAlign: "center",
-                              border: "1px solid lightGrey",
                             }}
+                            key={elem.id}
                           >
-                            {elem.week2}
-                          </TableCell>
-                          <TableCell
-                            sx={{
-                              textAlign: "center",
-                              border: "1px solid lightGrey",
-                            }}
-                          >
-                            {elem.week3}
-                          </TableCell>
-                          <TableCell
-                            sx={{
-                              textAlign: "center",
-                              border: "1px solid lightGrey",
-                            }}
-                          >
-                            {elem.week4}
-                          </TableCell>
-                          <TableCell
-                            sx={{
-                              textAlign: "center",
-                              border: "1px solid lightGrey",
-                            }}
-                          >
-                            {elem.week5}
-                          </TableCell>
-                          <TableCell
-                            sx={{
-                              textAlign: "center",
-                              border: "1px solid lightGrey",
-                            }}
-                          >
-                            {elem.week6}
-                          </TableCell>
-                          <TableCell
-                            sx={{
-                              textAlign: "center",
-                              border: "1px solid lightGrey",
-                            }}
-                          >
-                            {elem.week7}
-                          </TableCell>
-                          <TableCell
-                            sx={{
-                              textAlign: "center",
-                              border: "1px solid lightGrey",
-                            }}
-                          >
-                            {elem.week8}
-                          </TableCell>
-                          <TableCell
-                            sx={{
-                              textAlign: "center",
-                              border: "1px solid lightGrey",
-                            }}
-                          >
-                            {elem.week9}
-                          </TableCell>
-                          <TableCell
-                            sx={{
-                              textAlign: "center",
-                              border: "1px solid lightGrey",
-                            }}
-                          >
-                            {elem.week10}
-                          </TableCell>
-                          <TableCell
-                            sx={{
-                              textAlign: "center",
-                              border: "1px solid lightGrey",
-                            }}
-                          >
-                            {elem.week11}
-                          </TableCell>
-                        </TableRow>
-                      ))}
+                            <TableCell sx={{ border: "1px solid lightGrey" }}>
+                              {elem.measure}
+                            </TableCell>
+                            <TableCell
+                              sx={{
+                                p: "5px 15px 5px 15px",
+                                textAlign: "center",
+                                border: "1px solid lightGrey",
+                              }}
+                            >
+                              {elem.week1}
+                            </TableCell>
+                            <TableCell
+                              sx={{
+                                textAlign: "center",
+                                border: "1px solid lightGrey",
+                              }}
+                            >
+                              {elem.week2}
+                            </TableCell>
+                            <TableCell
+                              sx={{
+                                textAlign: "center",
+                                border: "1px solid lightGrey",
+                              }}
+                            >
+                              {elem.week3}
+                            </TableCell>
+                            <TableCell
+                              sx={{
+                                textAlign: "center",
+                                border: "1px solid lightGrey",
+                              }}
+                            >
+                              {elem.week4}
+                            </TableCell>
+                            <TableCell
+                              sx={{
+                                textAlign: "center",
+                                border: "1px solid lightGrey",
+                              }}
+                            >
+                              {elem.week5}
+                            </TableCell>
+                            <TableCell
+                              sx={{
+                                textAlign: "center",
+                                border: "1px solid lightGrey",
+                              }}
+                            >
+                              {elem.week6}
+                            </TableCell>
+                            <TableCell
+                              sx={{
+                                textAlign: "center",
+                                border: "1px solid lightGrey",
+                              }}
+                            >
+                              {elem.week7}
+                            </TableCell>
+                            <TableCell
+                              sx={{
+                                textAlign: "center",
+                                border: "1px solid lightGrey",
+                              }}
+                            >
+                              {elem.week8}
+                            </TableCell>
+                            <TableCell
+                              sx={{
+                                textAlign: "center",
+                                border: "1px solid lightGrey",
+                              }}
+                            >
+                              {elem.week9}
+                            </TableCell>
+                            <TableCell
+                              sx={{
+                                textAlign: "center",
+                                border: "1px solid lightGrey",
+                              }}
+                            >
+                              {elem.week10}
+                            </TableCell>
+                            <TableCell
+                              sx={{
+                                textAlign: "center",
+                                border: "1px solid lightGrey",
+                              }}
+                            >
+                              {elem.week11}
+                            </TableCell>
+                          </TableRow>
+                        )
+                      )}
                     </TableBody>
                   </Table>
                 </TableContainer>
               </Box>
             </Box>
+
           </Collapse>
+          {openModal && <Confirmation openModal={openModal} setOpenModal={setOpenModal} />}
+
         </TableCell>
       </TableRow>
     </React.Fragment>
