@@ -15,7 +15,6 @@ import { Checkbox, FormControl, FormControlLabel, FormGroup, InputLabel, MenuIte
 import Fab from '@mui/material/Fab';
 import DialogBox from './DialogBox';
 
-
 const ColorButton = styled(Button)(() => ({
     color: "white",
     backgroundColor: "#398585",
@@ -24,20 +23,22 @@ const ColorButton = styled(Button)(() => ({
     },
 }));
 
-const FabButton = styled(Fab)(() => ({
-    color: "white",
-    backgroundColor: "#398585",
-    "&:hover": {
-        backgroundColor: "#398585",
-    },
-}));
+// const FabButton = styled(Fab)(() => ({
+//     color: "#398585",
+//     backgroundColor: "white",
+//     "&:hover": {
+//         backgroundColor: "#398585",
+//         color:
+//     },
+// }));
 
 export default function TemporaryDrawer() {
     const [state, setState] = React.useState({
         left: false,
     });
 
-    const [age, setAge] = React.useState('');
+    const [year, setYear] = React.useState('');
+    const [month, setMonth] = React.useState('');
     const [open, setOpen] = React.useState(false);
 
     const handleClickOpen = () => {
@@ -70,9 +71,7 @@ export default function TemporaryDrawer() {
                         <ListItemButton sx={{ marginTop: '10px' }}>
                             <ListItemText primary="Views" sx={{ color: '#398585' }} />
                         </ListItemButton>
-                        {/* </div> */}
                         <Divider />
-                        {/* <div style={{ display: 'flex', flexDirection: 'column' }}> */}
                         <FormControl sx={{ ml: "10px" }}>
                             <RadioGroup
                                 row
@@ -81,8 +80,18 @@ export default function TemporaryDrawer() {
                                 defaultValue='Daily'
                             >
                                 <div style={{ display: 'flex', flexDirection: 'column' }}>
-                                    <FormControlLabel value="Daily" control={<Radio />} label="Daily" onClick={toggleDrawer(anchor, false)} />
-                                    <FormControlLabel value="Weekly" control={<Radio />} label="Weekly" onClick={toggleDrawer(anchor, false)} />
+                                    <FormControlLabel value="Daily" control={<Radio sx={{
+                                        color: '#398585',
+                                        '&.Mui-checked': {
+                                            color: '#398585',
+                                        },
+                                    }} />} label="Daily" />
+                                    <FormControlLabel value="Weekly" control={<Radio sx={{
+                                        color: '#398585',
+                                        '&.Mui-checked': {
+                                            color: '#398585',
+                                        },
+                                    }} />} label="Weekly" />
                                 </div>
                             </RadioGroup>
                         </FormControl>
@@ -100,8 +109,18 @@ export default function TemporaryDrawer() {
                                 defaultValue='3 Days'
                             >
                                 <div style={{ display: 'flex', flexDirection: 'column' }}>
-                                    <FormControlLabel value="3 Days" control={<Radio />} label="3 Days" onClick={toggleDrawer(anchor, false)} />
-                                    <FormControlLabel value="7 Days" control={<Radio />} label="7 Days" onClick={toggleDrawer(anchor, false)} />
+                                    <FormControlLabel value="3 Days" control={<Radio sx={{
+                                        color: '#398585',
+                                        '&.Mui-checked': {
+                                            color: '#398585',
+                                        },
+                                    }} />} label="3 Days" />
+                                    <FormControlLabel value="7 Days" control={<Radio sx={{
+                                        color: '#398585',
+                                        '&.Mui-checked': {
+                                            color: '#398585',
+                                        },
+                                    }} />} label="7 Days" />
                                 </div>
                             </RadioGroup>
                         </FormControl>
@@ -112,10 +131,20 @@ export default function TemporaryDrawer() {
                         <ListItemText primary="Modal Attributes" sx={{ color: '#398585' }} />
                     </ListItemButton>
                     <Divider />
-                    <FormGroup sx={{ ml: "20px" }}>
-                        <div>
-                            <FormControlLabel control={<Checkbox />} label="RSF" />
-                            <FormControlLabel control={<Checkbox />} label="White Noise" />
+                    <FormGroup sx={{ ml: "25px" }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                            <FormControlLabel control={<Checkbox sx={{
+                                color: '#398585',
+                                '&.Mui-checked': {
+                                    color: '#398585',
+                                },
+                            }} />} label="RSF" />
+                            <FormControlLabel control={<Checkbox sx={{
+                                color: '#398585',
+                                '&.Mui-checked': {
+                                    color: '#398585',
+                                },
+                            }} />} label="White Noise" />
                         </div>
                     </FormGroup>
                     <ColorButton variant='contained' sx={{ backgroundColor: '#398585', width: '300px', margin: '0px auto', display: 'flex' }}>View</ColorButton>
@@ -128,32 +157,34 @@ export default function TemporaryDrawer() {
                     <Divider />
                     <div style={{ display: 'flex', gap: 5, padding: '10px 10px' }}>
                         <FormControl size='small' sx={{ width: '240px' }}>
-                            <InputLabel id="demo-simple-select-label">Age</InputLabel>
+                            <InputLabel id="demo-simple-select-label">Year</InputLabel>
                             <Select
                                 labelId="demo-simple-select-label"
                                 id="demo-simple-select"
-                                value={age}
-                                label="Age"
+                                value={year}
+                                label="Year"
                                 onChange={handleChange}
                             >
-                                <MenuItem value={10}>Ten</MenuItem>
-                                <MenuItem value={20}>Twenty</MenuItem>
-                                <MenuItem value={30}>Thirty</MenuItem>
+                                <MenuItem value={10}>2023</MenuItem>
+                                <MenuItem value={20}>2021</MenuItem>
+                                <MenuItem value={30}>2019</MenuItem>
+                                <MenuItem value={30}>2017</MenuItem>
                             </Select>
                         </FormControl>
 
                         <FormControl size='small' sx={{ width: '240px' }}>
-                            <InputLabel id="demo-simple-select-label">Age</InputLabel>
+                            <InputLabel id="demo-simple-select-label">Month</InputLabel>
                             <Select
                                 labelId="demo-simple-select-label"
                                 id="demo-simple-select"
-                                value={age}
-                                label="Age"
+                                value={month}
+                                label="Month"
                                 onChange={handleChange}
                             >
-                                <MenuItem value={10}>Ten</MenuItem>
-                                <MenuItem value={20}>Twenty</MenuItem>
-                                <MenuItem value={30}>Thirty</MenuItem>
+                                <MenuItem value={10}>Jan</MenuItem>
+                                <MenuItem value={20}>Mar</MenuItem>
+                                <MenuItem value={30}>May</MenuItem>
+                                <MenuItem value={30}>July</MenuItem>
                             </Select>
                         </FormControl>
                     </div>
@@ -163,9 +194,41 @@ export default function TemporaryDrawer() {
                         <ListItemText primary="Filters" sx={{ color: '#398585' }} />
                     </ListItemButton>
                     <Divider />
-                    <Typography sx={{ margin: '10px 20px', fontSize: '18px' }} onClick={handleClickOpen}>
-                        ABCXYZ Classes
-                    </Typography>
+                    <ListItemButton onClick={handleClickOpen}>
+                        <Typography sx={{ margin: '10px 20px', fontSize: '18px', cursor: 'pointer' }} >
+                            ABCXYZ Classes
+                        </Typography>
+                    </ListItemButton>
+                    <ListItemButton onClick={handleClickOpen}>
+                        <Typography sx={{ margin: '10px 20px', fontSize: '18px', cursor: 'pointer' }} >
+                            Care
+                        </Typography>
+                    </ListItemButton>
+                    <ListItemButton onClick={handleClickOpen}>
+                        <Typography sx={{ margin: '10px 20px', fontSize: '18px', cursor: 'pointer' }} >
+                            Brand
+                        </Typography>
+                    </ListItemButton>
+                    <ListItemButton onClick={handleClickOpen}>
+                        <Typography sx={{ margin: '10px 20px', fontSize: '18px', cursor: 'pointer' }} >
+                            Grammage
+                        </Typography>
+                    </ListItemButton>
+                    <ListItemButton onClick={handleClickOpen}>
+                        <Typography sx={{ margin: '10px 20px', fontSize: '18px', cursor: 'pointer' }} >
+                            SKU
+                        </Typography>
+                    </ListItemButton>
+                    <ListItemButton onClick={handleClickOpen}>
+                        <Typography sx={{ margin: '10px 20px', fontSize: '18px', cursor: 'pointer' }} >
+                            Variant
+                        </Typography>
+                    </ListItemButton>
+                    <ListItemButton onClick={handleClickOpen}>
+                        <Typography sx={{ margin: '10px 20px', fontSize: '18px', cursor: 'pointer' }} >
+                            Location
+                        </Typography>
+                    </ListItemButton>
                 </>
                 {open ? <DialogBox setOpen={setOpen} open={open} /> : null}
             </List>
@@ -176,9 +239,9 @@ export default function TemporaryDrawer() {
         <div>
             {['left'].map((anchor) => (
                 <React.Fragment key={anchor}>
-                    <FabButton onClick={toggleDrawer(anchor, true)} sx={{ marginLeft: '30px' }}>
-                        <GoFilter size={35} color='white' />
-                    </FabButton>
+                    <Fab size='medium' onClick={toggleDrawer(anchor, true)} sx={{ marginLeft: '25px', position: 'fixed', bottom: 20, backgroundColor: 'white' }}>
+                        <GoFilter size={27} color='#398585' />
+                    </Fab>
                     <Drawer
                         anchor={anchor}
                         open={state[anchor]}

@@ -1,4 +1,5 @@
 "use client";
+
 import * as React from "react";
 import PropTypes from "prop-types";
 import Box from "@mui/material/Box";
@@ -13,6 +14,8 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import { Card, Divider, Typography } from "@mui/material";
+
 const data1 = [
   "ABCXYZ",
   "Cat Desc",
@@ -243,7 +246,7 @@ function Row(props) {
                           </TableCell>
                           <TableCell
                             sx={{
-                            p: "5px 15px 5px 15px",
+                              p: "5px 15px 5px 15px",
                               textAlign: "center",
                               border: "1px solid lightGrey",
                             }}
@@ -366,44 +369,48 @@ const rows = [
 
 export default function CollapsibleTable() {
   return (
-    <Box sx={{ overflow: "auto", p: "20px" }}>
-      <Box sx={{ width: "100%", display: "table", tableLayout: "fixed" }}>
-        {/* <Paper sx={{ width: '100%', overflow: 'hidden',display:'flex',justifyContent:'center' }}> */}
-        <TableContainer sx={{ maxHeight: 540 }} component={Paper}>
-          <Table aria-label="collapsible table">
-            <TableHead sx={{ backgroundColor: "#398585" }}>
-              <TableRow>
-                <TableCell />
+    <Card sx={{ boxShadow: "1px 1px 8px #80808085", margin: '30px' }}>
+      <Typography sx={{ padding: 2, color: '#398585' }}>Results</Typography>
+      <Divider />
+      <Box sx={{ overflow: "auto", p: "20px" }}>
+        <Box sx={{ width: "100%", display: "table", tableLayout: "fixed" }}>
+          {/* <Paper sx={{ width: '100%', overflow: 'hidden',display:'flex',justifyContent:'center' }}> */}
+          <TableContainer sx={{ maxHeight: 540 }} component={Paper}>
+            <Table aria-label="collapsible table">
+              <TableHead sx={{ backgroundColor: "#398585" }}>
+                <TableRow>
+                  <TableCell />
 
-                {data1.map((elem) => {
-                  return (
-                    <TableCell
-                      align="center"
-                      style={{
-                        backgroundColor: "#398585",
-                        color: "white",
-                        border: "1px solid white",
-                        whiteSpace: "nowrap",
-                        padding: "8px 18px 8px 18px",
-                        position: "sticky",
-                        fontSize: "15px",
-                        textAlign: "center",
-                      }}
-                    >
-                      {elem}
-                    </TableCell>
-                  );
-                })}
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {rows.map((row) => (
-                <Row key={row.name} row={row} />
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
+                  {data1.map((elem) => {
+                    return (
+                      <TableCell
+                        align="center"
+                        style={{
+                          backgroundColor: "#398585",
+                          color: "white",
+                          border: "1px solid white",
+                          whiteSpace: "nowrap",
+                          padding: "8px 18px 8px 18px",
+                          position: "sticky",
+                          fontSize: "15px",
+                          textAlign: "center",
+                        }}
+                      >
+                        {elem}
+                      </TableCell>
+                    );
+                  })}
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {rows.map((row) => (
+                  <Row key={row.name} row={row} />
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </Box>
       </Box>
-    </Box>
+    </Card>
   );
 }

@@ -1,94 +1,127 @@
-'use client'
-
 import * as React from 'react';
 import PropTypes from 'prop-types';
+import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import { styled } from '@mui/material/styles';
-import Dialog from '@mui/material/Dialog';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
-import IconButton from '@mui/material/IconButton';
-import CloseIcon from '@mui/icons-material/Close';
-import Typography from '@mui/material/Typography';
+import Dialog from '@mui/material/Dialog';
+import RadioGroup from '@mui/material/RadioGroup';
+import Radio from '@mui/material/Radio';
+import FormControlLabel from '@mui/material/FormControlLabel';
 
-const BootstrapDialog = styled(Dialog)(({ theme }) => ({
-    '& .MuiDialogContent-root': {
-        padding: theme.spacing(2),
-    },
-    '& .MuiDialogActions-root': {
-        padding: theme.spacing(1),
-    },
-}));
+const options = [
+    'None',
+    'Atria',
+    'Callisto',
+    'Dione',
+    'Ganymede',
+    'Hangouts Call',
+    'Luna',
+    'Oberon',
+    'Phobos',
+    'Pyxis',
+    'Sedna',
+    'Titania',
+    'Triton',
+    'Umbriel',
+];
 
-function BootstrapDialogTitle(props) {
-    const { children, onClose, ...other } = props;
+function ConfirmationDialogRaw(props) {
+    const { onClose, value: valueProp, open, ...other } = props;
+    const [value, setValue] = React.useState(valueProp);
+    const radioGroupRef = React.useRef(null);
 
-    return (
-        <DialogTitle sx={{ m: 0, p: 2 }} {...other}>
-            {children}
-            {onClose ? (
-                <IconButton
-                    aria-label="close"
-                    onClick={onClose}
-                    sx={{
-                        position: 'absolute',
-                        right: 8,
-                        top: 8,
-                        color: (theme) => theme.palette.grey[500],
-                    }}
-                >
-                    <CloseIcon />
-                </IconButton>
-            ) : null}
-        </DialogTitle>
-    );
-}
+    React.useEffect(() => {
+        if (!open) {
+            setValue(valueProp);
+        }
+    }, [valueProp, open]);
 
-BootstrapDialogTitle.propTypes = {
-    children: PropTypes.node,
-    onClose: PropTypes.func.isRequired,
-};
+    const handleEntering = () => {
+        if (radioGroupRef.current != null) {
+            radioGroupRef.current.focus();
+        }
+    };
 
-export default function DialogBox({ open, setOpen, title }) {
+    const handleCancel = () => {
+        onClose();
+    };
 
-    const handleClose = () => {
-        setOpen(false);
+    const handleOk = () => {
+        onClose(value);
+    };
+
+    const handleChange = (event) => {
+        setValue(event.target.value);
     };
 
     return (
-        <div>
-            <BootstrapDialog
-                sx={{ '& .MuiDialog-paper': { width: '80%', maxHeight: 435 } }}
-                onClose={handleClose}
-                aria-labelledby="customized-dialog-title"
-                open={open}
-            >
-                <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
-                    {title}
-                </BootstrapDialogTitle>
-                <DialogContent dividers>
-                    <Typography gutterBottom>
-                        Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-                        dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-                        consectetur ac, vestibulum at eros.
-                    </Typography>
-                    <Typography gutterBottom>
-                        Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
-                        Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
-                    </Typography>
-                    <Typography gutterBottom>
-                        Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus
-                        magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec
-                        ullamcorper nulla non metus auctor fringilla.
-                    </Typography>
-                </DialogContent>
-                <DialogActions>
-                    <Button autoFocus onClick={handleClose}>
-                        Save changes
-                    </Button>
-                </DialogActions>
-            </BootstrapDialog>
-        </div>
+        <Dialog
+            sx={{ '& .MuiDialog-paper': { width: '80%', maxHeight: 435 } }}
+            maxWidth="xs"
+            TransitionProps={{ onEntering: handleEntering }}
+            open={open}
+            {...other}
+        >
+            <DialogTitle>Phone Ringtone</DialogTitle>
+            <DialogContent dividers>
+                <RadioGroup
+                    ref={radioGroupRef}
+                    aria-label="ringtone"
+                    name="ringtone"
+                    value={value}
+                    onChange={handleChange}
+                >
+                    {options.map((option) => (
+                        <FormControlLabel
+                            value={option}
+                            key={option}
+                            control={<Radio />}
+                            label={option}
+                        />
+                    ))}
+                </RadioGroup>
+            </DialogContent>
+            <DialogActions>
+                <Button autoFocus onClick={handleCancel}>
+                    Cancel
+                </Button>
+                <Button onClick={handleOk}>Ok</Button>
+            </DialogActions>
+        </Dialog>
+    );
+}
+
+ConfirmationDialogRaw.propTypes = {
+    onClose: PropTypes.func.isRequired,
+    open: PropTypes.bool.isRequired,
+    value: PropTypes.string.isRequired,
+};
+
+export default function DialogBox({ open, setOpen }) {
+
+    const handleClose = (newValue) => {
+        setOpen(false);
+
+        if (newValue) {
+            setValue(newValue);
+        }
+    };
+
+    return (
+        <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+            <List component="div" role="group">               
+                <ConfirmationDialogRaw
+                    id="ringtone-menu"
+                    keepMounted
+                    open={open}
+                    onClose={handleClose}
+                />
+            </List>
+        </Box>
     );
 }

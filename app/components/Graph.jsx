@@ -16,10 +16,11 @@ const Graph = () => {
             sx={{
                 boxShadow: "1px 1px 8px #80808085",
                 // marginTop: "30px",
+                margin: '30px',
                 height: "495px",
             }}
         >
-            <Typography sx={{ padding: 2 }}>Graph</Typography>
+            <Typography sx={{ padding: 2, color: '#398585' }}>Graph</Typography>
             <Divider />
             <Plot
                 style={{ Width: "100%" }}
