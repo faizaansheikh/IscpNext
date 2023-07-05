@@ -1,3 +1,6 @@
+import Appbar from "./components/Appbar";
+// import Table from "./components/table/Table";
+import CollapseTable from './components/table/CollapseTable'
 'use client'
 
 import { Grid } from "@mui/material";
@@ -17,6 +20,8 @@ const page = () => {
       <Graph />
       {/* </Grid> */}
       {/* </Grid> */}
+      <Appbar />
+      <CollapseTable />
     </div>
   )
 }
