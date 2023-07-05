@@ -1,13 +1,20 @@
-import Appbar from "./components/Appbar";
-// import Table from "./components/table/Table";
+'use client'
+
 import CollapseTable from './components/table/CollapseTable'
+import Appbar from "./components/Appbar";
+import TemporaryDrawer from "./components/SideDrawer";
+import Graph from "./components/Graph";
+import GuageGraph from './components/GuageGraph';
 
 const page = () => {
   return (
-    <div>
+    <>
       <Appbar />
-      <CollapseTable/>
-    </div>
+      <TemporaryDrawer />
+      <Graph />
+      <GuageGraph />
+      <CollapseTable />
+    </>
   )
 }
 

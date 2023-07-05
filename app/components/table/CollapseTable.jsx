@@ -1,4 +1,5 @@
 "use client";
+
 import * as React from "react";
 import PropTypes from "prop-types";
 import Box from "@mui/material/Box";
@@ -18,7 +19,7 @@ import { makeStyles } from "@mui/styles";
 import CloseIcon from '@mui/icons-material/Close';
 import DoneIcon from "@mui/icons-material/Done";
 import Confirmation from "./Confirmation";
-const noPointer = {cursor: 'pointer'};
+const noPointer = { cursor: 'pointer' };
 const data1 = [
   "ABCXYZ",
   "Cat Desc",
@@ -134,15 +135,15 @@ function Row(props) {
   const useStyles = makeStyles({
     input: {
       '& input[type=number]': {
-          '-moz-appearance': 'textfield'
+        '-moz-appearance': 'textfield'
       },
       '& input[type=number]::-webkit-outer-spin-button': {
-          '-webkit-appearance': 'none',
-          margin: 0
+        '-webkit-appearance': 'none',
+        margin: 0
       },
       '& input[type=number]::-webkit-inner-spin-button': {
-          '-webkit-appearance': 'none',
-          margin: 0
+        '-webkit-appearance': 'none',
+        margin: 0
       }
     },
   });
@@ -290,8 +291,8 @@ function Row(props) {
                               }}
                             >
                               <TextField
-                               type="number"
-                               className={classes.input}
+                                type="number"
+                                className={classes.input}
                                 variant="standard"
                                 inputProps={{
                                   min: 0,
@@ -466,8 +467,8 @@ function Row(props) {
 
                             <TableCell
                               sx={{
-                                bgcolor:'#398585',
-                                p:'0px',    
+                                bgcolor: '#398585',
+                                p: '0px',
                                 textAlign: "center",
                                 // border: "1px solid lightGrey",
                               }}
@@ -475,15 +476,15 @@ function Row(props) {
                               <IconButton
                                 style={noPointer}
                               >
-                                <DoneIcon onClick={()=>setOpenModal(true)} sx={{color:'whitesmoke'}} style={noPointer}/> 
-                               
+                                <DoneIcon onClick={() => setOpenModal(true)} sx={{ color: 'whitesmoke' }} style={noPointer} />
+
                               </IconButton>
-                             
+
                             </TableCell>
                             <TableCell
                               sx={{
-                                bgcolor:'#398585',
-                                p:'0px',
+                                bgcolor: '#398585',
+                                p: '0px',
                                 textAlign: "center",
                                 // border: "1px solid lightGrey",
                               }}
@@ -491,10 +492,10 @@ function Row(props) {
                               <IconButton
                                 style={noPointer}
                               >
-                            
-                                <CloseIcon onClick={()=>setIndexVal(9)} sx={{color:'whitesmoke'}} style={noPointer}/>
+
+                                <CloseIcon onClick={() => setIndexVal(9)} sx={{ color: 'whitesmoke' }} style={noPointer} />
                               </IconButton>
-                             
+
                             </TableCell>
                           </TableRow>
                         ) : (
@@ -610,10 +611,10 @@ function Row(props) {
                 </TableContainer>
               </Box>
             </Box>
-           
+
           </Collapse>
-          {openModal && <Confirmation openModal={openModal} setOpenModal={setOpenModal}/>}
-          
+          {openModal && <Confirmation openModal={openModal} setOpenModal={setOpenModal} />}
+
         </TableCell>
       </TableRow>
     </React.Fragment>
@@ -642,44 +643,48 @@ const rows = [
 
 export default function CollapsibleTable() {
   return (
-    <Box sx={{ overflow: "auto", p: "20px" }}>
-      <Box sx={{ width: "100%", display: "table", tableLayout: "fixed" }}>
-        {/* <Paper sx={{ width: '100%', overflow: 'hidden',display:'flex',justifyContent:'center' }}> */}
-        <TableContainer sx={{ maxHeight: 540 }} component={Paper}>
-          <Table aria-label="collapsible table">
-            <TableHead sx={{ backgroundColor: "#398585" }}>
-              <TableRow>
-                <TableCell />
+    <Card sx={{ boxShadow: "1px 1px 8px #80808085", margin: '30px' }}>
+      <Typography sx={{ padding: 2, color: '#398585' }}>Results</Typography>
+      <Divider />
+      <Box sx={{ overflow: "auto", p: "20px" }}>
+        <Box sx={{ width: "100%", display: "table", tableLayout: "fixed" }}>
+          {/* <Paper sx={{ width: '100%', overflow: 'hidden',display:'flex',justifyContent:'center' }}> */}
+          <TableContainer sx={{ maxHeight: 540 }} component={Paper}>
+            <Table aria-label="collapsible table">
+              <TableHead sx={{ backgroundColor: "#398585" }}>
+                <TableRow>
+                  <TableCell />
 
-                {data1.map((elem) => {
-                  return (
-                    <TableCell
-                      align="center"
-                      style={{
-                        backgroundColor: "#398585",
-                        color: "white",
-                        border: "1px solid white",
-                        whiteSpace: "nowrap",
-                        padding: "8px 18px 8px 18px",
-                        position: "sticky",
-                        fontSize: "15px",
-                        textAlign: "center",
-                      }}
-                    >
-                      {elem}
-                    </TableCell>
-                  );
-                })}
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {rows.map((row) => (
-                <Row key={row.name} row={row} />
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
+                  {data1.map((elem) => {
+                    return (
+                      <TableCell
+                        align="center"
+                        style={{
+                          backgroundColor: "#398585",
+                          color: "white",
+                          border: "1px solid white",
+                          whiteSpace: "nowrap",
+                          padding: "8px 18px 8px 18px",
+                          position: "sticky",
+                          fontSize: "15px",
+                          textAlign: "center",
+                        }}
+                      >
+                        {elem}
+                      </TableCell>
+                    );
+                  })}
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {rows.map((row) => (
+                  <Row key={row.name} row={row} />
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </Box>
       </Box>
-    </Box>
+    </Card>
   );
 }

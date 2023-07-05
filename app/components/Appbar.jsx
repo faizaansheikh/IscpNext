@@ -1,31 +1,27 @@
 'use client'
+
 import * as React from 'react';
-// import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-// import InputBase from '@mui/material/InputBase';
 
 import Image from 'next/image';
 
-
 export default function PrimarySearchAppBar() {
-
- 
   return (
-    <Box sx={{m:'0px'}}>
-      <AppBar position="fixed" sx={{bgcolor: "#398585"}}>
+    <Box sx={{ m: '0px' }}>
+      <AppBar position="fixed" sx={{ bgcolor: "#398585" }}>
         <Toolbar>
-        <Image
+          <Image
             src="/logo.png"
             // alt="Picture of the author"
-            style={{paddingRight:'10px'}}
+            style={{ paddingRight: '10px' }}
             width={68}
             height={45}
             quality={100}
           >
-            </Image>
+          </Image>
           <Typography
             variant="h6"
             noWrap
@@ -34,14 +30,11 @@ export default function PrimarySearchAppBar() {
           >
             ISCP-Integrated Supply Chain Planning
           </Typography>
-          
+
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-           <Typography sx={{ fontSize: "18px", mr: "20px" }}> Demand Management</Typography>
-            
-           
+            <Typography sx={{ fontSize: "18px", mr: "20px" }}> Demand Management</Typography>
           </Box>
-          
         </Toolbar>
       </AppBar>
       <Toolbar />
