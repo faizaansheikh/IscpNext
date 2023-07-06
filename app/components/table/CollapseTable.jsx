@@ -14,7 +14,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import { Button, TextField } from "@mui/material";
+import { Button, Card, Divider, TextField, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import CloseIcon from '@mui/icons-material/Close';
 import DoneIcon from "@mui/icons-material/Done";
@@ -500,7 +500,7 @@ function Row(props) {
                           </TableRow>
                         ) : (
                           <TableRow
-                            onClick={() => setIndexVal(elem.id)}
+                            // onClick={() => setIndexVal(elem.id)}
                             align="center"
                             style={{
                               whiteSpace: "nowrap",
