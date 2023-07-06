@@ -100,8 +100,11 @@ function SideDrawer() {
   const [state, setState] = React.useState({
     left: false,
   });
-  const [year, setYear] = React.useState("");
-  const [month, setMonth] = React.useState("");
+  const [dates, setDates] = React.useState({
+    year : '',
+    month : ''
+  });
+  
   const [open, setOpen] = React.useState(false);
   const [dialogTitle, setDialogTitle] = React.useState("");
   const [options, setOptions] = React.useState([]);
@@ -109,10 +112,9 @@ function SideDrawer() {
   const [filterView, setFilterView] = React.useState({
     views: "Daily",
     week: "3 Days",
+    modalAttribute : []
   });
-  const [filterAtt, setFilterAtt] = React.useState({
-    modalAttribute: "",
-  });
+  // const [modalAttribute, setModalAttribute] = React.useState([]);
   const [filtersVal, setFiltersVal] = React.useState({
     ABCXYZ: "",
     Care: "",
@@ -150,12 +152,27 @@ function SideDrawer() {
   };
   const handleCheckBox = (e) => {
     const { value, checked } = e.target;
-    
+    if(checked){
+      setFilterView(prevState => ({
+        ...prevState,
+        modalAttribute: [...prevState.modalAttribute, value]
+      }));
+      
+    }else{
+      setFilterView(prevState => ({
+        ...prevState,
+        modalAttribute: prevState.modalAttribute.filter(item => item !== value)
+      }));
+    }
   };
-  console.log(filterAtt);
-  const handleChange = (event) => {
-    setAge(event.target.value);
-  };
+ 
+  const handleDateChange = (e)=>{
+    setDates(pre =>({
+      ...pre,
+      [e.target.name] : e.target.value
+    }))
+  }
+  
   const handleViewChange = (val) => {
     setFilterView({ ...filterView, views: val });
   };
@@ -173,6 +190,11 @@ function SideDrawer() {
     setState({ ...state, [anchor]: open });
   };
 
+ React.useEffect(()=>{
+  // console.log(filterView);
+  console.log(dates);
+  console.log(filtersVal);
+ },[filtersVal.Location])
   const list = (anchor) => (
     <Box
       sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 350 }}
@@ -304,6 +326,7 @@ function SideDrawer() {
             </div>
           </FormGroup>
           <ColorButton
+            onClick={()=>console.log(filterView)}
             variant="contained"
             sx={{
               backgroundColor: "#398585",
@@ -325,32 +348,34 @@ function SideDrawer() {
             <FormControl size="small" sx={{ width: "240px" }}>
               <InputLabel id="demo-simple-select-label">Year</InputLabel>
               <Select
+                name="year"
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
-                value={year}
+                value={dates.year}
                 label="Year"
-                onChange={handleChange}
+                onChange={handleDateChange}
               >
-                <MenuItem value={10}>2023</MenuItem>
-                <MenuItem value={20}>2021</MenuItem>
-                <MenuItem value={30}>2019</MenuItem>
-                <MenuItem value={30}>20dd17</MenuItem>
+                <MenuItem value={2023}>2023</MenuItem>
+                <MenuItem value={2021}>2021</MenuItem>
+                <MenuItem value={2019}>2019</MenuItem>
+                <MenuItem value={2017}>2017</MenuItem>
               </Select>
             </FormControl>
 
             <FormControl size="small" sx={{ width: "240px" }}>
               <InputLabel id="demo-simple-select-label">Month</InputLabel>
               <Select
+                name="month"
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
-                value={month}
+                value={dates.month}
                 label="Month"
-                onChange={handleChange}
+                onChange={handleDateChange}
               >
-                <MenuItem value={10}>Jan</MenuItem>
-                <MenuItem value={20}>Mar</MenuItem>
-                <MenuItem value={30}>May</MenuItem>
-                <MenuItem value={30}>July</MenuItem>
+                <MenuItem value='Jan'>Jan</MenuItem>
+                <MenuItem value='Mar'>Mar</MenuItem>
+                <MenuItem value='May'>May</MenuItem>
+                <MenuItem value='July'>July</MenuItem>
               </Select>
             </FormControl>
           </div>

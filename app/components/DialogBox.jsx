@@ -42,7 +42,7 @@ function ConfirmationDialogRaw(props) {
   };
 
   const handleOk = () => {
-    console.log(value1, filtersVal);
+    // console.log(value1, filtersVal);
 
     onClose();
   };
