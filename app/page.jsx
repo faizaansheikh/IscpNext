@@ -2,7 +2,7 @@
 
 import CollapseTable from './components/table/CollapseTable'
 import Appbar from "./components/Appbar";
-import TemporaryDrawer from "./components/SideDrawer";
+import SideDrawer from "./components/SideDrawer";
 import Graph from "./components/Graph";
 import GuageGraph from './components/GuageGraph';
 import FilterCard from './components/FilterCard';
