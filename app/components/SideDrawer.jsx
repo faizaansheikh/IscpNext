@@ -128,7 +128,7 @@ function SideDrawer() {
     setOpen(true);
 
     if (elem === "ABCXYZ Classes") {
-      setDialogTitle(elem);
+      setDialogTitle('ABCXYZ');
       setOptions(filters.ABCXYZ);
     } else if (elem === "Care") {
       setDialogTitle(elem);

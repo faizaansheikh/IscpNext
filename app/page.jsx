@@ -12,7 +12,7 @@ const page = () => {
   return (
     <>
       <Appbar />
-      <TemporaryDrawer />
+      <SideDrawer />
       <Grid container spacing={1.3} sx={{ padding: '30px' }}>
         <Grid item xs={6} md={3} sx={{ display: 'grid', rowGap: '10px' }}>
           <FilterCard />
