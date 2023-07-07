@@ -15,9 +15,6 @@ const GuageGraph = () => {
         <Card
             sx={{
                 boxShadow: "1px 1px 8px #80808085",
-                // marginTop: "30px",
-                margin: '30px',
-                height: "495px",
             }}
         >
             <Typography sx={{ padding: 2, color: '#398585' }}>AI Accuracy</Typography>
@@ -36,9 +33,7 @@ const GuageGraph = () => {
                 ]}
                 layout={
                     {
-                        // width: '100%',
-                        // height: 600,
-                        // title: "hello",
+                        height: 240,
                     }
                 }
                 config={{ responsive: true }}

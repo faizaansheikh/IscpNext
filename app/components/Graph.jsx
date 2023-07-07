@@ -15,9 +15,7 @@ const Graph = () => {
         <Card
             sx={{
                 boxShadow: "1px 1px 8px #80808085",
-                // marginTop: "30px",
-                margin: '30px',
-                height: "495px",
+                height: "509px",
             }}
         >
             <Typography sx={{ padding: 2, color: '#398585' }}>Graph</Typography>
@@ -54,13 +52,6 @@ const Graph = () => {
                         type: "scatter",
                     },
                 ]}
-                layout={
-                    {
-                        // width: '100%',
-                        // height: 600,
-                        // title: "hello",
-                    }
-                }
                 config={{ responsive: true }}
             />
         </Card>

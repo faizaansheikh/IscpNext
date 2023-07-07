@@ -101,10 +101,10 @@ function SideDrawer() {
     left: false,
   });
   const [dates, setDates] = React.useState({
-    year : '',
-    month : ''
+    year: '',
+    month: ''
   });
-  
+
   const [open, setOpen] = React.useState(false);
   const [dialogTitle, setDialogTitle] = React.useState("");
   const [options, setOptions] = React.useState([]);
@@ -112,7 +112,7 @@ function SideDrawer() {
   const [filterView, setFilterView] = React.useState({
     views: "Daily",
     week: "3 Days",
-    modalAttribute : []
+    modalAttribute: []
   });
   // const [modalAttribute, setModalAttribute] = React.useState([]);
   const [filtersVal, setFiltersVal] = React.useState({
@@ -128,7 +128,7 @@ function SideDrawer() {
     setOpen(true);
 
     if (elem === "ABCXYZ Classes") {
-      setDialogTitle(elem);
+      setDialogTitle('ABCXYZ');
       setOptions(filters.ABCXYZ);
     } else if (elem === "Care") {
       setDialogTitle(elem);
@@ -152,27 +152,27 @@ function SideDrawer() {
   };
   const handleCheckBox = (e) => {
     const { value, checked } = e.target;
-    if(checked){
+    if (checked) {
       setFilterView(prevState => ({
         ...prevState,
         modalAttribute: [...prevState.modalAttribute, value]
       }));
-      
-    }else{
+
+    } else {
       setFilterView(prevState => ({
         ...prevState,
         modalAttribute: prevState.modalAttribute.filter(item => item !== value)
       }));
     }
   };
- 
-  const handleDateChange = (e)=>{
-    setDates(pre =>({
+
+  const handleDateChange = (e) => {
+    setDates(pre => ({
       ...pre,
-      [e.target.name] : e.target.value
+      [e.target.name]: e.target.value
     }))
   }
-  
+
   const handleViewChange = (val) => {
     setFilterView({ ...filterView, views: val });
   };
@@ -190,11 +190,11 @@ function SideDrawer() {
     setState({ ...state, [anchor]: open });
   };
 
- React.useEffect(()=>{
-  // console.log(filterView);
-  console.log(dates);
-  console.log(filtersVal);
- },[filtersVal.Location])
+  React.useEffect(() => {
+    // console.log(filterView);
+    console.log(dates);
+    console.log(filtersVal);
+  }, [filtersVal.Location])
   const list = (anchor) => (
     <Box
       sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 350 }}
@@ -326,7 +326,7 @@ function SideDrawer() {
             </div>
           </FormGroup>
           <ColorButton
-            onClick={()=>console.log(filterView)}
+            onClick={() => console.log(filterView)}
             variant="contained"
             sx={{
               backgroundColor: "#398585",
@@ -419,19 +419,10 @@ function SideDrawer() {
 
   return (
     <div>
-      {["left"].map((anchor) => (
+      {['left'].map((anchor) => (
         <React.Fragment key={anchor}>
-          <Fab
-            size="medium"
-            onClick={toggleDrawer(anchor, true)}
-            sx={{
-              marginLeft: "25px",
-              position: "fixed",
-              bottom: 20,
-              backgroundColor: "white",
-            }}
-          >
-            <GoFilter size={27} color="#398585" />
+          <Fab size='medium' onClick={toggleDrawer(anchor, true)} sx={{ marginLeft: '25px', position: 'fixed', bottom: 20, backgroundColor: 'white' }}>
+            <GoFilter size={27} color='#398585' />
           </Fab>
           <Drawer
             anchor={anchor}

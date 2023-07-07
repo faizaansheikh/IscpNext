@@ -16,9 +16,11 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { Button, Card, Divider, TextField, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import CloseIcon from '@mui/icons-material/Close';
-import DoneIcon from "@mui/icons-material/Done";
 import Confirmation from "./Confirmation";
+import EditIcon from '@mui/icons-material/Edit';
+// import DoneIcon from '@mui/icons-material/Done';
+import DoneSharpIcon from '@mui/icons-material/DoneSharp';
+// import ActionMenu from "../ActionMenu";
 const noPointer = { cursor: 'pointer' };
 const data1 = [
   "ABCXYZ",
@@ -42,6 +44,7 @@ const data2 = [
   "Week 9",
   "Week 10",
   "Week 11",
+  'Actions'
 ];
 
 function createData(
@@ -76,6 +79,7 @@ function createData(
         week9: 2,
         week10: 1,
         week11: 2,
+
       },
       {
         id: "1",
@@ -151,18 +155,19 @@ function Row(props) {
   return (
     <React.Fragment>
       <TableRow
-        sx={{ backgroundColor: open ? "#d7eaea" : "white" }}
-        align="center"
-        style={{
+        sx={{
+          backgroundColor: 'white',
           border: "1px solid white",
           whiteSpace: "nowrap",
-          padding: "8px 18px 8px 18px",
+          // padding: "8px 18px 8px 18px",
           position: "sticky",
           fontSize: "15px",
           textAlign: "center",
         }}
+        align="center"
+
       >
-        <TableCell align="center">
+        <TableCell align="center" sx={{ padding: '0px' }}>
           <IconButton
             aria-label="expand row"
             size="small"
@@ -251,12 +256,12 @@ function Row(props) {
                       {row.history.map((elem) =>
                         indexVal === elem.id ? (
                           <TableRow
-                            onClick={() => setIndexVal(elem.id)}
+                            // onClick={() => setIndexVal(elem.id)}
                             align="center"
                             style={{
                               whiteSpace: "nowrap",
-                              // padding: "8px 18px 8px 18px",
-
+                              padding: "8px 18px 8px 18px",
+                              padding: '0px',
                               fontSize: "15px",
                               textAlign: "center",
                             }}
@@ -267,7 +272,7 @@ function Row(props) {
                             </TableCell>
                             <TableCell
                               sx={{
-                                p: "5px 15px 5px 15px",
+                                p: "0px 5px",
                                 textAlign: "center",
                                 border: "1px solid lightGrey",
                               }}
@@ -464,24 +469,24 @@ function Row(props) {
                                 onChange={(e) => setInputVal(e.target.value)}
                               />
                             </TableCell>
-
                             <TableCell
                               sx={{
-                                bgcolor: '#398585',
-                                p: '0px',
+                                // bgcolor: '#398585',
+                                padding: '0px',
                                 textAlign: "center",
-                                // border: "1px solid lightGrey",
+                                border: "1px solid lightGrey",
                               }}
                             >
                               <IconButton
                                 style={noPointer}
+                                onClick={() => setIndexVal(null)}
                               >
-                                <DoneIcon onClick={() => setOpenModal(true)} sx={{ color: 'whitesmoke' }} style={noPointer} />
+                                <DoneSharpIcon />
 
                               </IconButton>
 
                             </TableCell>
-                            <TableCell
+                            {/* <TableCell
                               sx={{
                                 bgcolor: '#398585',
                                 p: '0px',
@@ -496,7 +501,7 @@ function Row(props) {
                                 <CloseIcon onClick={() => setIndexVal(9)} sx={{ color: 'whitesmoke' }} style={noPointer} />
                               </IconButton>
 
-                            </TableCell>
+                            </TableCell> */}
                           </TableRow>
                         ) : (
                           <TableRow
@@ -504,7 +509,7 @@ function Row(props) {
                             align="center"
                             style={{
                               whiteSpace: "nowrap",
-                              // padding: "8px 18px 8px 18px",
+                              padding: "8px 18px 8px 18px",
 
                               fontSize: "15px",
                               textAlign: "center",
@@ -516,7 +521,7 @@ function Row(props) {
                             </TableCell>
                             <TableCell
                               sx={{
-                                p: "5px 15px 5px 15px",
+                                // p: "5px 15px 5px 15px",
                                 textAlign: "center",
                                 border: "1px solid lightGrey",
                               }}
@@ -603,6 +608,19 @@ function Row(props) {
                             >
                               {elem.week11}
                             </TableCell>
+                            <TableCell
+                              sx={{
+                                textAlign: "center",
+                                border: "1px solid lightGrey",
+                                padding: '0px'
+                              }}>
+                              <IconButton
+                                style={noPointer}
+                                onClick={() => setIndexVal(elem.id)}
+                              >
+                                <EditIcon />
+                              </IconButton>
+                            </TableCell>
                           </TableRow>
                         )
                       )}
@@ -643,7 +661,7 @@ const rows = [
 
 export default function CollapsibleTable() {
   return (
-    <Card sx={{ boxShadow: "1px 1px 8px #80808085", margin: '30px' }}>
+    <Card sx={{ boxShadow: "1px 1px 8px #80808085" }}>
       <Typography sx={{ padding: 2, color: '#398585' }}>Results</Typography>
       <Divider />
       <Box sx={{ overflow: "auto", p: "20px" }}>
