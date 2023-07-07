@@ -239,7 +239,7 @@ export default function TemporaryDrawer() {
         <div>
             {['left'].map((anchor) => (
                 <React.Fragment key={anchor}>
-                    <Fab size='medium' onClick={toggleDrawer(anchor, true)} sx={{ marginLeft: '25px', position: 'fixed', bottom: 20, backgroundColor: 'white' }}>
+                    <Fab size='medium' onClick={toggleDrawer(anchor, true)} sx={{ marginLeft: '25px', position: 'fixed', top: 80, backgroundColor: 'white' }}>
                         <GoFilter size={27} color='#398585' />
                     </Fab>
                     <Drawer
