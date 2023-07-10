@@ -36,7 +36,7 @@ const GuageGraph = () => {
                 layout={
                     {
                         
-                        height: 240,
+                        height: 280,
                     }
                 }
                 config={{ responsive: true }}
