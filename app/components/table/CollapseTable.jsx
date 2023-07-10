@@ -665,7 +665,7 @@ const rows = [
 export default function CollapsibleTable() {
   return (
     <Card sx={{ boxShadow: "1px 1px 8px #80808085", borderRadius:'9px' }}>
-      <Typography sx={{ pt: 3,pl:5, color: '#0A5F59',fontSize:'18px',fontWeight:'400' }}>Results</Typography>
+      <Typography sx={{ pt: 3,pl:2, color: '#0A5F59',fontSize:'18px',fontWeight:'400' }}>Results</Typography>
       <Divider />
       <Box sx={{ overflow: "auto", p: "20px" }}>
         <Box sx={{ width: "100%", display: "table", tableLayout: "fixed" }}>

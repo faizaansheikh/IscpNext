@@ -1,7 +1,26 @@
 'use client'
 
-import { Card, Typography } from '@mui/material'
+import styled from '@emotion/styled';
+import { Button, Card, Typography } from '@mui/material'
 import React from 'react'
+
+const FilterButton = styled(Button)(() => ({
+    color: "white",
+    backgroundColor: "#0A5F59",
+    borderRadius: '9px',
+    "&:hover": {
+      backgroundColor: "#096861",
+    },
+  }));
+
+  const FilterButton2 = styled(Button)(() => ({
+    color: "#0A5F59",
+    border: "2px solid #0A5F59",
+    borderRadius: '9px',
+    "&:hover": {
+    border: "2px solid #0A5F59",
+    },
+  }));
 
 const FilterCard = () => {
     return (
@@ -26,8 +45,12 @@ const FilterCard = () => {
                 <Typography>Target Month / Year:</Typography>
                 <Typography variant='h6' sx={{ marginLeft: '50px' }}>October (10) 2022</Typography>
             </Card>
+            <div style={{display: 'flex', justifyContent: 'space-between', gap: '3px'}}>
+            <FilterButton sx={{width: '100%'}}>Reset</FilterButton>
+            <FilterButton2 variant='outlined' sx={{width: '100%'}}>Save</FilterButton2>
+            </div>
         </div>
     )
-}
+    }
 
 export default FilterCard

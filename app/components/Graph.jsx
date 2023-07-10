@@ -15,7 +15,7 @@ const Graph = () => {
         <Card
             sx={{
                 boxShadow: "1px 1px 8px #80808085",
-                height: "509px",
+                height: "598px",
                 borderRadius:'9px',
             }}
         >
