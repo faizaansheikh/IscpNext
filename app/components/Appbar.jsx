@@ -11,7 +11,7 @@ import Image from 'next/image';
 export default function PrimarySearchAppBar() {
   return (
     <Box sx={{ m: '0px' }}>
-      <AppBar position="fixed" sx={{ bgcolor: "#398585" }}>
+      <AppBar position="fixed" sx={{ bgcolor: "#0A5F59" }}>
         <Toolbar>
           <Image
             src="/logo.png"

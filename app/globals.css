@@ -1,3 +1,6 @@
+body{
+  background-color: #f5eabd;
+}
 .container {
   overflow: auto !important;
 }
@@ -5,5 +8,7 @@
 .css-4t3x6l-MuiPaper-root-MuiDrawer-paper {
   top: 3px;
   left: 5px;
+  /* background-color: #096861; */
   border-radius: 5px;
+
 }

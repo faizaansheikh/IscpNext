@@ -156,7 +156,9 @@ function Row(props) {
     <React.Fragment>
       <TableRow
         sx={{
-          backgroundColor: 'white',
+          backgroundColor:'#fce6ba',
+                
+          // backgroundColor: '#f5eabd',
           border: "1px solid white",
           whiteSpace: "nowrap",
           // padding: "8px 18px 8px 18px",
@@ -235,7 +237,7 @@ function Row(props) {
                             <TableCell
                               align="center"
                               style={{
-                                backgroundColor: "#398585",
+                                backgroundColor: "#0A5F59",
                                 color: "white",
                                 border: "1px solid white",
                                 whiteSpace: "nowrap",
@@ -471,6 +473,7 @@ function Row(props) {
                             </TableCell>
                             <TableCell
                               sx={{
+                               
                                 // bgcolor: '#398585',
                                 padding: '0px',
                                 textAlign: "center",
@@ -478,10 +481,10 @@ function Row(props) {
                               }}
                             >
                               <IconButton
-                                style={noPointer}
+                                style={{ color:'green',noPointer}}
                                 onClick={() => setIndexVal(null)}
                               >
-                                <DoneSharpIcon />
+                                <DoneSharpIcon color="green"/>
 
                               </IconButton>
 
@@ -615,7 +618,7 @@ function Row(props) {
                                 padding: '0px'
                               }}>
                               <IconButton
-                                style={noPointer}
+                                style={{ color:'#0A5F59',noPointer}}
                                 onClick={() => setIndexVal(elem.id)}
                               >
                                 <EditIcon />
@@ -661,15 +664,15 @@ const rows = [
 
 export default function CollapsibleTable() {
   return (
-    <Card sx={{ boxShadow: "1px 1px 8px #80808085" }}>
-      <Typography sx={{ padding: 2, color: '#398585' }}>Results</Typography>
+    <Card sx={{ boxShadow: "1px 1px 8px #80808085", borderRadius:'9px' }}>
+      <Typography sx={{ pt: 3,pl:5, color: '#0A5F59',fontSize:'18px',fontWeight:'400' }}>Results</Typography>
       <Divider />
       <Box sx={{ overflow: "auto", p: "20px" }}>
         <Box sx={{ width: "100%", display: "table", tableLayout: "fixed" }}>
           {/* <Paper sx={{ width: '100%', overflow: 'hidden',display:'flex',justifyContent:'center' }}> */}
           <TableContainer sx={{ maxHeight: 540 }} component={Paper}>
             <Table aria-label="collapsible table">
-              <TableHead sx={{ backgroundColor: "#398585" }}>
+              <TableHead sx={{ backgroundColor: "#0A5F59" }}>
                 <TableRow>
                   <TableCell />
 
@@ -678,7 +681,7 @@ export default function CollapsibleTable() {
                       <TableCell
                         align="center"
                         style={{
-                          backgroundColor: "#398585",
+                          backgroundColor: "#0A5F59",
                           color: "white",
                           border: "1px solid white",
                           whiteSpace: "nowrap",

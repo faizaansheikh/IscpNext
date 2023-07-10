@@ -15,17 +15,19 @@ const GuageGraph = () => {
         <Card
             sx={{
                 boxShadow: "1px 1px 8px #80808085",
+                borderRadius:'9px',
             }}
         >
             <Typography sx={{ padding: 2, color: '#398585' }}>AI Accuracy</Typography>
             <Divider />
             <Plot
-                style={{ Width: "100%" }}
+            //  style={{ width: '100%', height: '100%' }}
+                style={{ Width: "50%" }}
                 data={[
                     {
                         type: "indicator",
                         mode: 'gauge+number',
-                        delta: { reference: 60 },
+                        delta: { reference: 40 },
                         value: 75,
                         gauge: { axis: { range: [null, 100] } },
                         'fillpattern': 'red'
@@ -33,6 +35,7 @@ const GuageGraph = () => {
                 ]}
                 layout={
                     {
+                        
                         height: 240,
                     }
                 }

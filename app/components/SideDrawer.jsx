@@ -90,9 +90,9 @@ const filters = {
 
 const ColorButton = styled(Button)(() => ({
   color: "white",
-  backgroundColor: "#398585",
+  backgroundColor: "#0A5F59",
   "&:hover": {
-    backgroundColor: "#398585",
+    backgroundColor: "#096861",
   },
 }));
 
@@ -197,7 +197,7 @@ function SideDrawer() {
   }, [filtersVal.Location])
   const list = (anchor) => (
     <Box
-      sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 350 }}
+      sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 350,bgcolor:'#f7f3e3' }}
       role="presentation"
       // onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
@@ -212,7 +212,7 @@ function SideDrawer() {
         >
           <div>
             <ListItemButton sx={{ marginTop: "10px" }}>
-              <ListItemText primary="Views" sx={{ color: "#398585" }} />
+              <ListItemText primary="Views" sx={{ color: "#0A5F59" }} />
             </ListItemButton>
             <Divider />
             <FormControl sx={{ ml: "10px" }}>
@@ -231,9 +231,9 @@ function SideDrawer() {
                         control={
                           <Radio
                             sx={{
-                              color: "#398585",
+                              color: "#0A5F59",
                               "&.Mui-checked": {
-                                color: "#398585",
+                                color: "#0A5F59",
                               },
                             }}
                           />
@@ -250,7 +250,7 @@ function SideDrawer() {
             <ListItemButton sx={{ marginTop: "10px" }}>
               <ListItemText
                 primary="Week Definition"
-                sx={{ color: "#398585" }}
+                sx={{ color: "#0A5F59" }}
               />
             </ListItemButton>
             <Divider />
@@ -271,9 +271,9 @@ function SideDrawer() {
                         control={
                           <Radio
                             sx={{
-                              color: "#398585",
+                              color: "#0A5F59",
                               "&.Mui-checked": {
-                                color: "#398585",
+                                color: "#0A5F59",
                               },
                             }}
                           />
@@ -287,11 +287,12 @@ function SideDrawer() {
             </FormControl>
           </div>
         </div>
-        <>
+       
+        <Box>
           <ListItemButton sx={{ marginTop: "20px" }}>
             <ListItemText
               primary="Modal Attributes"
-              sx={{ color: "#398585" }}
+              sx={{ color: "#0A5F59" }}
             />
           </ListItemButton>
           <Divider />
@@ -312,9 +313,9 @@ function SideDrawer() {
                     control={
                       <Checkbox
                         sx={{
-                          color: "#398585",
+                          color: "#0A5F59",
                           "&.Mui-checked": {
-                            color: "#398585",
+                            color: "#0A5F59",
                           },
                         }}
                       />
@@ -327,9 +328,9 @@ function SideDrawer() {
           </FormGroup>
           <ColorButton
             onClick={() => console.log(filterView)}
-            variant="contained"
+            // variant="contained"
             sx={{
-              backgroundColor: "#398585",
+              backgroundColor: "#0A5F59",
               width: "300px",
               margin: "0px auto",
               display: "flex",
@@ -337,11 +338,12 @@ function SideDrawer() {
           >
             View
           </ColorButton>
-        </>
+         
+        
 
-        <>
+      
           <ListItemButton sx={{ marginTop: "20px" }}>
-            <ListItemText primary="Year & Month" sx={{ color: "#398585" }} />
+            <ListItemText primary="Year & Month" sx={{ color: "#0A5F59" }} />
           </ListItemButton>
           <Divider />
           <div style={{ display: "flex", gap: 5, padding: "10px 10px" }}>
@@ -379,10 +381,11 @@ function SideDrawer() {
               </Select>
             </FormControl>
           </div>
-        </>
+          </Box>
+       
         <>
           <ListItemButton sx={{ marginTop: "20px" }}>
-            <ListItemText primary="Filters" sx={{ color: "#398585" }} />
+            <ListItemText primary="Filters" sx={{ color: "#0A5F59" }} />
           </ListItemButton>
           <Divider />
           {filterButtons.map((elem) => {
@@ -421,7 +424,7 @@ function SideDrawer() {
     <div>
       {['left'].map((anchor) => (
         <React.Fragment key={anchor}>
-          <Fab size='medium' onClick={toggleDrawer(anchor, true)} sx={{ marginLeft: '25px', position: 'fixed', bottom: 20, backgroundColor: 'white' }}>
+          <Fab size='medium' onClick={toggleDrawer(anchor, true)} sx={{ marginLeft: '25px', position: 'fixed', bottom: 20, backgroundColor: 'white',top:65 }}>
             <GoFilter size={27} color='#398585' />
           </Fab>
           <Drawer

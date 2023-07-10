@@ -10,6 +10,7 @@ import Dialog from "@mui/material/Dialog";
 import RadioGroup from "@mui/material/RadioGroup";
 import Radio from "@mui/material/Radio";
 import FormControlLabel from "@mui/material/FormControlLabel";
+import styled from "@emotion/styled";
 
 function ConfirmationDialogRaw(props) {
   const {
@@ -53,6 +54,14 @@ function ConfirmationDialogRaw(props) {
     setFiltersVal({ ...filtersVal, [dialogTitle]: val });
   };
 
+const ColorButton = styled(Button)(() => ({
+  // sx={{bgcolor:'#0A5F59',color:'white'}}
+    color: "white",
+    backgroundColor: "#0A5F59",
+    "&:hover": {
+      backgroundColor: "#0A5F59",
+    },
+  }));
   return (
     <Dialog
       sx={{ "& .MuiDialog-paper": { width: "80%", maxHeight: 435 } }}
@@ -61,9 +70,11 @@ function ConfirmationDialogRaw(props) {
       open={open}
       {...other}
     >
-      <DialogTitle>{dialogTitle}</DialogTitle>
-      <DialogContent dividers>
+
+      <DialogTitle sx={{bgcolor: "#0A5F59",color:'whitesmoke'}}>{dialogTitle}</DialogTitle>
+      <DialogContent sx={{bgcolor:'#f4edd2'}} dividers>
         <RadioGroup
+          
           ref={radioGroupRef}
           aria-label="ringtone"
           name="ringtone"
@@ -75,7 +86,12 @@ function ConfirmationDialogRaw(props) {
             <FormControlLabel
               value={option}
               key={option}
-              control={<Radio />}
+              control={<Radio  sx={{
+                color: "#0A5F59",
+                "&.Mui-checked": {
+                  color: "#0A5F59",
+                },
+              }}/>}
               label={option}
               onChange={() => handleRadioChange(option)}
             />
@@ -83,10 +99,10 @@ function ConfirmationDialogRaw(props) {
         </RadioGroup>
       </DialogContent>
       <DialogActions>
-        <Button autoFocus onClick={handleCancel}>
+        <ColorButton onClick={handleCancel}>
           Cancel
-        </Button>
-        <Button onClick={handleOk}>Ok</Button>
+        </ColorButton>
+        <ColorButton  onClick={handleOk}>Ok</ColorButton>
       </DialogActions>
     </Dialog>
   );
@@ -117,7 +133,7 @@ export default function DialogBox({
   };
 
   return (
-    <Box sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
+    <Box sx={{ width: "100%", maxWidth: 360, bgcolor: "#0A5F59" }}>
       <List component="div" role="group">
         <ConfirmationDialogRaw
           setFiltersVal={setFiltersVal}

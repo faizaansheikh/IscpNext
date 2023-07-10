@@ -16,6 +16,7 @@ const Graph = () => {
             sx={{
                 boxShadow: "1px 1px 8px #80808085",
                 height: "509px",
+                borderRadius:'9px',
             }}
         >
             <Typography sx={{ padding: 2, color: '#398585' }}>Graph</Typography>
