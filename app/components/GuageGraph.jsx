@@ -18,7 +18,7 @@ const GuageGraph = () => {
                 borderRadius:'9px',
             }}
         >
-            <Typography sx={{ padding: 2, color: '#398585' }}>AI Accuracy</Typography>
+            <Typography sx={{ padding: 2, color: '#0A5F59' }}>AI Accuracy</Typography>
             <Divider />
             <Plot
             //  style={{ width: '100%', height: '100%' }}

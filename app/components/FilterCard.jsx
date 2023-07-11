@@ -33,7 +33,7 @@ const FilterCard = () => {
                 color: 'white'
             }}>
                 <Typography >Current Month / Year:</Typography>
-                <Typography variant='h6' sx={{ marginLeft: '50px' }}>September (9) 2022</Typography>
+                <Typography variant='h6' sx={{ marginLeft: '0px' }}>September (9) 2022</Typography>
             </Card>
             <Card sx={{
                 borderRadius:'9px',
@@ -43,7 +43,7 @@ const FilterCard = () => {
                 color: 'black'
             }}>
                 <Typography>Target Month / Year:</Typography>
-                <Typography variant='h6' sx={{ marginLeft: '50px' }}>October (10) 2022</Typography>
+                <Typography variant='h6' sx={{ marginLeft: '0px' }}>October (10) 2022</Typography>
             </Card>
             <div style={{display: 'flex', justifyContent: 'space-between', gap: '3px'}}>
             <FilterButton sx={{width: '100%'}}>Reset</FilterButton>
