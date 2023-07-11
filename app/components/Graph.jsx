@@ -17,9 +17,10 @@ const Graph = () => {
                 boxShadow: "1px 1px 8px #80808085",
                 height: "598px",
                 borderRadius:'9px',
+                
             }}
         >
-            <Typography sx={{ padding: 2, color: '#398585' }}>Graph</Typography>
+            <Typography sx={{ padding: 2, color: '#0A5F59' }}>Graph</Typography>
             <Divider />
             <Plot
                 style={{ Width: "100%" }}
